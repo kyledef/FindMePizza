@@ -1,11 +1,9 @@
 package org.kyledef.findmepizza.helper;
 
-import android.animation.ValueAnimator;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,12 +13,11 @@ import org.kyledef.findmepizza.model.OutletModel;
 
 import java.util.ArrayList;
 
-/**
- * Created by kyle on 2/24/15.
- */
+//http://www.jayway.com/2014/12/23/android-recyclerview-simple-list/ -> Helpful for onclick binding
 public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.OutletViewHolder> {
 
     private ArrayList<OutletModel> list;
+    protected OutletClickListener listener;
 
     public OutletAdapter(ArrayList<OutletModel> list) {
         this.list = list;
@@ -34,11 +31,7 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.OutletView
 
     @Override
     public void onBindViewHolder(OutletViewHolder pizzaViewHolder, int listPosition) {
-        pizzaViewHolder.name.setText(list.get(listPosition).getName());
-        pizzaViewHolder.address.setText(list.get(listPosition).getAddress());
-        pizzaViewHolder.phone1.setText(list.get(listPosition).getContact());
-        pizzaViewHolder.franchise.setText(list.get(listPosition).getFranchise());
-        pizzaViewHolder.logo.setImageResource(list.get(listPosition).getLogoR());
+        pizzaViewHolder.bind(list.get(listPosition));
     }
 
     public OutletAdapter addModels(ArrayList<OutletModel> list){
@@ -51,7 +44,12 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.OutletView
         return list.size();
     }
 
-    public static class OutletViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public OutletAdapter setOnItemClickListener(OutletClickListener listener){
+        this.listener = listener;
+        return this;
+    }
+
+    public class OutletViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView name;
         TextView address;
@@ -59,22 +57,39 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.OutletView
         TextView franchise;
         ImageView logo;
 
+        OutletModel model;
+
         public OutletViewHolder(View itemView) {
             super(itemView);
 
-            name = (TextView)itemView.findViewById(R.id.name);
-            address = (TextView)itemView.findViewById(R.id.address);
-            phone1 = (TextView)itemView.findViewById(R.id.phone1);
-            franchise = (TextView)itemView.findViewById(R.id.franchise);
-            logo = (ImageView)itemView.findViewById(R.id.logo_view);
+            name = (TextView) itemView.findViewById(R.id.name);
+            address = (TextView) itemView.findViewById(R.id.address);
+            phone1 = (TextView) itemView.findViewById(R.id.phone1);
+            franchise = (TextView) itemView.findViewById(R.id.franchise);
+            logo = (ImageView) itemView.findViewById(R.id.logo_view);
 
+            itemView.setOnClickListener(this); // Set the ViewHolder to handle click listener
+        }
 
-            itemView.setOnClickListener(this);
+        public void bind(OutletModel model){
+            this.model = model;
+            name.setText(model.getName());
+            address.setText(model.getAddress());
+            phone1.setText(model.getContact());
+            franchise.setText(model.getFranchise());
+            logo.setImageResource(model.getLogoR());
         }
 
         @Override
         public void onClick(View v) {
-            Toast.makeText(v.getContext(), "Selected: " + v.toString(), Toast.LENGTH_SHORT).show();
+            if (listener != null){ // Listener from the adapter
+                listener.onItemClick(model); // run the listener for the current viewholder that has a model which received the click
+            }
         }
+    }
+
+    public interface OutletClickListener{
+        public void onItemClick(OutletModel outlet);
+
     }
 }

@@ -21,4 +21,5 @@
     </string-array>
 
     <string name="pizza_source">http://en.wikipedia.org/wiki/List_of_pizza_varieties_by_country#mediaviewer/File:Supreme_pizza.jpg</string>
+    <string name="menu_title">Menu</string>
 </resources>

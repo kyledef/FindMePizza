@@ -1,5 +1,6 @@
 package org.kyledef.findmepizza.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -25,7 +26,7 @@ import org.kyledef.findmepizza.ui.fragments.NavDrawerFragment;
 import java.util.ArrayList;
 
 
-public class PizzaList extends BaseActivity {
+public class PizzaList extends BaseActivity implements OutletAdapter.OutletClickListener {
 
     private RecyclerView recyclerView;
     public static final String TAG = "PizzaList";
@@ -36,20 +37,19 @@ public class PizzaList extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // Add the Current Layout as part of the parent layout
         FrameLayout content = (FrameLayout) findViewById(R.id.content_frame);
         View pizzaLayout = LayoutInflater.from(this).inflate(R.layout.activity_pizza_list, content, false);
         content.addView(pizzaLayout);
-
 
         recyclerView = (RecyclerView) findViewById(R.id.pizza_list);
         RecyclerHelper.configureRecycler(this, recyclerView);
 
         list = new ArrayList<>();
         adapter = new OutletAdapter(list);
+        adapter.setOnItemClickListener(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
-
-        Log.d(TAG, "Relaunching onCreate");
 
         new Thread(new Runnable() {
             @Override
@@ -65,9 +65,11 @@ public class PizzaList extends BaseActivity {
                 });
             }
         }).start();
-
     }
 
-
-
+    @Override
+    public void onItemClick(OutletModel outlet) {
+        Log.d(TAG, "Selected: " + outlet);
+        startActivity(new Intent(this, MenuActivity.class));
+    }
 }
