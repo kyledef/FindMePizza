@@ -11,8 +11,9 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         card_view:cardBackgroundColor="#ffff"
-        card_view:cardCornerRadius="10dp"
-        card_view:cardElevation="5dp"  >
+        card_view:cardElevation="5dp"
+        android:layout_marginBottom="@dimen/item_margin"
+        android:layout_marginTop="@dimen/item_margin">
 
         <LinearLayout
             android:orientation="horizontal"
@@ -20,8 +21,8 @@
             android:layout_height="fill_parent">
 
             <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
                 android:id="@+id/logo_view"
                 android:src="@drawable/pizza_hut"
                 android:contentDescription="@string/image_description"
@@ -36,16 +37,29 @@
                 android:layout_height="fill_parent"
                 android:id="@+id/outlet_container">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Name"
-                    android:id="@+id/name"
-                    android:textStyle="bold"
-                    android:textSize="20sp"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="1dp"
-                    android:layout_marginRight="5dp" />
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/card_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/action_bar_size"
+                    android:background="@android:color/white">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        android:id="@+id/name"
+                        android:textStyle="bold"
+                        android:textSize="20sp"
+                        android:layout_marginTop="1dp" />
+                </android.support.v7.widget.Toolbar>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="@dimen/outlet_side_margin"
+                    android:background="@android:color/darker_gray" />
+
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -53,9 +67,9 @@
                     android:text="Address"
                     android:id="@+id/address"
                     android:textSize="12sp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="@dimen/outlet_side_margin"
                     android:layout_marginTop="1dp"
-                    android:layout_marginRight="5dp" />
+                    android:layout_marginRight="@dimen/outlet_side_margin" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -63,9 +77,9 @@
                     android:text="Phone Number"
                     android:id="@+id/phone1"
                     android:textSize="12sp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="@dimen/outlet_side_margin"
                     android:layout_marginTop="1dp"
-                    android:layout_marginRight="5dp" />
+                    android:layout_marginRight="@dimen/outlet_side_margin" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -73,9 +87,9 @@
                     android:text="Franchise"
                     android:id="@+id/franchise"
                     android:textSize="10sp"
-                    android:layout_marginLeft="5dp"
+                    android:layout_marginLeft="@dimen/outlet_side_margin"
                     android:layout_marginTop="1dp"
-                    android:layout_marginRight="5dp"
+                    android:layout_marginRight="@dimen/outlet_side_margin"
                     android:layout_marginBottom="1dp" />
 
             </LinearLayout>

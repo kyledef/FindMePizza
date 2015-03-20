@@ -74,6 +74,20 @@ public class PizzaModelManager {
         return list;
     }
 
+    public ArrayList<FranchiseModel> getFranchises(){
+        ArrayList<FranchiseModel> list = new ArrayList<>();
+        try {
+            JSONArray fList = retrieveFranchises();
+            Map<String, Integer> logoMap = this.getLogos();
+            for (int i = 0; i < fList.length(); i++) {
+                JSONObject json = fList.getJSONObject(i);
+                Integer logoR = logoMap.get(json.getString("shortcode"));
+                FranchiseModel fm = new FranchiseModel(json.getString("name"),json.getString("shortcode"),json.getString("url"),logoR.intValue());
+                list.add(fm);
+            }
+        }catch(Exception e){e.printStackTrace();}
+        return list;
+    }
 
     private JSONObject retrieveAllInfo(){
         if (fullData == null) {
