@@ -46,9 +46,7 @@ public class PizzaModelManager {
             for (int i = 0; i < jList.length(); i++) {
                 JSONObject json = jList.getJSONObject(i);
                 Integer logoR = logoMap.get(json.getString("franchise"));
-//                System.out.println(json.getString("franchise")+" "+logoR);
                 OutletModel mModel = new OutletModel(json.getString("name"), json.getString("address"), json.getString("franchise"),logoR.intValue(), json.getString("phone1"));
-//                OutletModel mModel = new OutletModel(json.getString("name"), json.getString("address"), json.getString("franchise"),json.getString("phone1"));
                 list.add(mModel);
 
             }
@@ -66,7 +64,6 @@ public class PizzaModelManager {
                 if (franchise.equalsIgnoreCase(json.getString("franchise"))) {
                     Integer logoR = logoMap.get(json.getString("franchise"));
                     OutletModel mModel = new OutletModel(json.getString("name"), json.getString("address"), json.getString("franchise"),logoR.intValue(), json.getString("phone1"));
-//                    OutletModel mModel = new OutletModel(json.getString("name"), json.getString("address"), json.getString("franchise"), json.getString("phone1"));
                     list.add(mModel);
                 }
             }
@@ -122,6 +119,20 @@ public class PizzaModelManager {
         return franchises;
     }
 
+    public ArrayList<MenuModel>getMenus(String franchise){
+        ArrayList<MenuModel> list = new ArrayList<>();
+        try {
+            JSONObject mainObj = this.retrieveAllInfo();
+            JSONArray jList = mainObj.getJSONArray(("menus"));
+            for (int i = 0; i < jList.length(); i++) {
+                JSONObject json = jList.getJSONObject(i);
+                MenuModel mModel = new MenuModel(json.getString("franchise"), json.getString("item"), json.getString("category"), json.getString("type"), json.getString("cost"));
+                list.add(mModel);
+            }
+        }catch(Exception e){e.printStackTrace();}
+        return list;
+    }
+
     public Map<String, Integer> getLogos(){
         Map<String, Integer> map = new HashMap<>();
         try{
@@ -129,11 +140,8 @@ public class PizzaModelManager {
             for (int i = 0; i < jList.length(); i++) {
                 JSONObject json = jList.getJSONObject(i);
                 String code = json.getString("shortcode");
-//                System.out.println(code +":"+json.getString("logo"));
-//                System.out.println(json.getString("logo").split("[@.]").length);
                 String logo = json.getString("logo").split("[@.]")[0];
                 int resource = context.getResources().getIdentifier(logo,"drawable", context.getPackageName());
-//                System.out.println(resource);
                 map.put(code, Integer.valueOf(resource));
             }
         }catch (JSONException e) {

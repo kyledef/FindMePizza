@@ -1,8 +1,6 @@
 package org.kyledef.findmepizza.model;
 
-/**
- * Created by kyle on 2/23/15.
- */
+
 public class OutletModel {
     String name;
     String address;
@@ -16,17 +14,6 @@ public class OutletModel {
         this.contacts = contacts;
         this.franchise = franchise;
         this.logoR = logo;
-    }
-
-    public OutletModel(String name, String address, String franchise, String ... contacts) {
-        this.name = name;
-        this.address = address;
-        this.contacts = contacts;
-        this.franchise = franchise;
-    }
-
-    public OutletModel(){
-        this.contacts = new String[0];
     }
 
     public String getName() {
