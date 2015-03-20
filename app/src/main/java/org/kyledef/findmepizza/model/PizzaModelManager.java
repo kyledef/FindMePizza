@@ -22,15 +22,15 @@ public class PizzaModelManager {
     JSONArray outlets = null;
     JSONArray franchises = null;
 
-    public static PizzaModelManager getInstance(Context context){
-        if (instance == null)instance = new PizzaModelManager(context);
-        else{
+    public static PizzaModelManager getInstance(Context context) {
+        if (instance == null) instance = new PizzaModelManager(context);
+        else {
             instance.setContext(context);
         }
         return instance;
     }
 
-    private PizzaModelManager(Context context){
+    private PizzaModelManager(Context context) {
         this.context = context;
     }
 
@@ -38,7 +38,7 @@ public class PizzaModelManager {
         this.context = context;
     }
 
-    public ArrayList<OutletModel>getOuLets(){
+    public ArrayList<OutletModel> getOuLets() {
         ArrayList<OutletModel> list = new ArrayList<>();
         try {
             JSONArray jList = this.retrieveOutlets();
@@ -46,15 +46,17 @@ public class PizzaModelManager {
             for (int i = 0; i < jList.length(); i++) {
                 JSONObject json = jList.getJSONObject(i);
                 Integer logoR = logoMap.get(json.getString("franchise"));
-                OutletModel mModel = new OutletModel(json.getString("name"), json.getString("address"), json.getString("franchise"),logoR.intValue(), json.getString("phone1"));
+                OutletModel mModel = new OutletModel(json.getString("name"), json.getString("address"), json.getString("franchise"), logoR.intValue(), json.getString("phone1"));
                 list.add(mModel);
 
             }
-        }catch(Exception e){e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return list;
     }
 
-    public ArrayList<OutletModel>getOuLets(String franchise){
+    public ArrayList<OutletModel> getOuLets(String franchise) {
         ArrayList<OutletModel> list = new ArrayList<>();
         try {
             JSONArray jList = this.retrieveOutlets();
@@ -63,15 +65,17 @@ public class PizzaModelManager {
                 JSONObject json = jList.getJSONObject(i);
                 if (franchise.equalsIgnoreCase(json.getString("franchise"))) {
                     Integer logoR = logoMap.get(json.getString("franchise"));
-                    OutletModel mModel = new OutletModel(json.getString("name"), json.getString("address"), json.getString("franchise"),logoR.intValue(), json.getString("phone1"));
+                    OutletModel mModel = new OutletModel(json.getString("name"), json.getString("address"), json.getString("franchise"), logoR.intValue(), json.getString("phone1"));
                     list.add(mModel);
                 }
             }
-        }catch(Exception e){e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return list;
     }
 
-    public ArrayList<FranchiseModel> getFranchises(){
+    public ArrayList<FranchiseModel> getFranchises() {
         ArrayList<FranchiseModel> list = new ArrayList<>();
         try {
             JSONArray fList = retrieveFranchises();
@@ -79,14 +83,16 @@ public class PizzaModelManager {
             for (int i = 0; i < fList.length(); i++) {
                 JSONObject json = fList.getJSONObject(i);
                 Integer logoR = logoMap.get(json.getString("shortcode"));
-                FranchiseModel fm = new FranchiseModel(json.getString("name"),json.getString("shortcode"),json.getString("url"),logoR.intValue());
+                FranchiseModel fm = new FranchiseModel(json.getString("name"), json.getString("shortcode"), json.getString("url"), logoR.intValue());
                 list.add(fm);
             }
-        }catch(Exception e){e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return list;
     }
 
-    private JSONObject retrieveAllInfo(){
+    private JSONObject retrieveAllInfo() {
         if (fullData == null) {
             try {
                 InputStream stream = context.getResources().getAssets().open("default.json");
@@ -107,50 +113,59 @@ public class PizzaModelManager {
 
     }
 
-    private JSONArray retrieveFranchises(){
-        if (franchises == null){
-            try{
+    private JSONArray retrieveFranchises() {
+        if (franchises == null) {
+            try {
                 JSONObject mainObj = retrieveAllInfo();
                 franchises = mainObj.getJSONArray("franchises");
-            }catch (JSONException e) {
+            } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
         return franchises;
     }
 
-    public ArrayList<MenuModel>getMenus(String franchise){
+    public ArrayList<MenuModel> getMenus(String franchise) {
         ArrayList<MenuModel> list = new ArrayList<>();
         try {
             JSONObject mainObj = this.retrieveAllInfo();
             JSONArray jList = mainObj.getJSONArray(("menus"));
             for (int i = 0; i < jList.length(); i++) {
                 JSONObject json = jList.getJSONObject(i);
-                MenuModel mModel = new MenuModel(json.getString("franchise"), json.getString("item"), json.getString("category"), json.getString("type"), json.getString("cost"));
-                list.add(mModel);
+                String type = "other";
+                try {
+                    type = json.getString("type");
+                } catch (Exception e) {
+                }
+                if (franchise.equalsIgnoreCase(json.getString("franchise"))) {
+                    MenuModel mModel = new MenuModel(json.getString("franchise"), json.getString("item"), json.getString("category"), type, json.getString("cost"));
+                    list.add(mModel);
+                }
             }
-        }catch(Exception e){e.printStackTrace();}
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return list;
     }
 
-    public Map<String, Integer> getLogos(){
+    public Map<String, Integer> getLogos() {
         Map<String, Integer> map = new HashMap<>();
-        try{
+        try {
             JSONArray jList = this.retrieveFranchises();
             for (int i = 0; i < jList.length(); i++) {
                 JSONObject json = jList.getJSONObject(i);
                 String code = json.getString("shortcode");
                 String logo = json.getString("logo").split("[@.]")[0];
-                int resource = context.getResources().getIdentifier(logo,"drawable", context.getPackageName());
+                int resource = context.getResources().getIdentifier(logo, "drawable", context.getPackageName());
                 map.put(code, Integer.valueOf(resource));
             }
-        }catch (JSONException e) {
+        } catch (JSONException e) {
             e.printStackTrace();
         }
         return map;
     }
 
-    private JSONArray retrieveOutlets(){
+    private JSONArray retrieveOutlets() {
         if (outlets == null) {
             try {
                 JSONObject mainObj = retrieveAllInfo();

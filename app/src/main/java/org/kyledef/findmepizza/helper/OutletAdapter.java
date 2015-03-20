@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import org.kyledef.findmepizza.R;
 import org.kyledef.findmepizza.model.OutletModel;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.OutletViewHolder> {
 
     private ArrayList<OutletModel> list;
-    protected OutletClickListener listener;
+    protected OutletClickListener onItemClickListener;
 
     public OutletAdapter(ArrayList<OutletModel> list) {
         this.list = list;
@@ -34,7 +33,7 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.OutletView
         pizzaViewHolder.bind(list.get(listPosition));
     }
 
-    public OutletAdapter addModels(ArrayList<OutletModel> list){
+    public OutletAdapter addModels(ArrayList<OutletModel> list) {
         this.list = list;
         return this;
     }
@@ -44,12 +43,12 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.OutletView
         return list.size();
     }
 
-    public OutletAdapter setOnItemClickListener(OutletClickListener listener){
-        this.listener = listener;
+    public OutletAdapter setOnItemClickListener(OutletClickListener listener) {
+        this.onItemClickListener = listener;
         return this;
     }
 
-    public class OutletViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class OutletViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name;
         TextView address;
@@ -68,10 +67,10 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.OutletView
             franchise = (TextView) itemView.findViewById(R.id.franchise);
             logo = (ImageView) itemView.findViewById(R.id.logo_view);
 
-            itemView.setOnClickListener(this); // Set the ViewHolder to handle click listener
+            itemView.setOnClickListener(this); // Set the ViewHolder to handle click onItemClickListener
         }
 
-        public void bind(OutletModel model){
+        public void bind(OutletModel model) {
             this.model = model;
             name.setText(model.getName());
             address.setText(model.getAddress());
@@ -82,14 +81,13 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.OutletView
 
         @Override
         public void onClick(View v) {
-            if (listener != null){ // Listener from the adapter
-                listener.onItemClick(model); // run the listener for the current viewholder that has a model which received the click
+            if (onItemClickListener != null) { // Listener from the adapter
+                onItemClickListener.onItemClick(model); // run the onItemClickListener for the current viewholder that has a model which received the click
             }
         }
     }
 
-    public interface OutletClickListener{
+    public interface OutletClickListener {
         public void onItemClick(OutletModel outlet);
-
     }
 }

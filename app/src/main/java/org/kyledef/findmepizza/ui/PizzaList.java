@@ -62,7 +62,11 @@ public class PizzaList extends BaseActivity implements OutletAdapter.OutletClick
     public void onItemClick(OutletModel outlet) {
         Log.d(TAG, "Selected: " + outlet);
         Intent i = new Intent(this, MenuList.class);
+        Bundle b = new Bundle();
 
+        i.putExtra("outlet", outlet);
+        b.putString("franchise", outlet.getFranchise());
+        i.putExtra("details", b);
         startActivity(i);
     }
 }
