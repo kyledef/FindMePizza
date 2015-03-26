@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory
+        android:title="@string/pref_sms_telemetry_title"
+        android:key="pref_key_storage_settings">
+        <CheckBoxPreference
+            android:key="pref_key_telemetry"
+            android:summary="@string/pref_summary_telemetry"
+            android:title="@string/pref_title_telemetry"
+            android:defaultValue="true"/>
+    </PreferenceCategory>
+</PreferenceScreen>

@@ -25,4 +25,10 @@
     <string name="name">Name</string>
 
     <string name="placeholder_text">Placeholder</string>
+    <string name="title_activity_outlet_filter">OutletFilterActivity</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="pref_sms_telemetry_title">Telemetry</string>
+    <string name="pref_summary_telemetry">Report anonymous usage and performance metrics in order to improve application over time.</string>
+    <string name="pref_title_telemetry">Enable Reporting</string>
 </resources>

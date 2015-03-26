@@ -5,10 +5,13 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.Toast;
 
 import org.kyledef.findmepizza.R;
+import org.kyledef.findmepizza.helper.Constants;
 import org.kyledef.findmepizza.helper.OutletAdapter;
 import org.kyledef.findmepizza.helper.RecyclerHelper;
 import org.kyledef.findmepizza.model.OutletModel;
@@ -44,11 +47,49 @@ public class PizzaList extends BaseActivity implements OutletAdapter.OutletClick
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
 
+        updateView(Constants.ALL, Constants.ALL);
+    }
+
+    @Override
+    public void onItemClick(OutletModel outlet) {
+        Log.d(TAG, "Selected: " + outlet);
+        Intent i = new Intent(this, MenuList.class);
+        Bundle b = new Bundle();
+
+        i.putExtra("outlet", outlet);
+        b.putString("franchise", outlet.getFranchise());
+        i.putExtra("details", b);
+        startActivity(i);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.action_filter) {
+            startActivityForResult(new Intent(this, OutletFilterActivity.class), Constants.OUTLET_FILTER);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        switch(requestCode){
+            case Constants.OUTLET_FILTER:
+                String location  = data.getStringExtra("location");
+                String franchise = data.getStringExtra("franchise");
+                updateView(franchise, location);
+                break;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    protected void updateView(final String franchise, final String area){
         new Thread(new Runnable() {
             @Override
             public void run() {
                 PizzaModelManager pmm = PizzaModelManager.getInstance(getApplicationContext());
-                list.addAll(pmm.getOuLets());
+                list = new ArrayList<>();
+                list.addAll(pmm.getOuLets(franchise, area));
                 Collections.sort(list, new Comparator<OutletModel>() {
                     @Override
                     public int compare(OutletModel outletModel, OutletModel outletModel2) {
@@ -67,15 +108,8 @@ public class PizzaList extends BaseActivity implements OutletAdapter.OutletClick
         }).start();
     }
 
-    @Override
-    public void onItemClick(OutletModel outlet) {
-        Log.d(TAG, "Selected: " + outlet);
-        Intent i = new Intent(this, MenuList.class);
-        Bundle b = new Bundle();
 
-        i.putExtra("outlet", outlet);
-        b.putString("franchise", outlet.getFranchise());
-        i.putExtra("details", b);
-        startActivity(i);
+    protected String getScreenName(){
+        return "Pizza Home";
     }
 }

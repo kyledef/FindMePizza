@@ -5,10 +5,12 @@ import android.content.Context;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.kyledef.findmepizza.helper.Constants;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,6 +59,9 @@ public class PizzaModelManager {
     }
 
     public ArrayList<OutletModel> getOuLets(String franchise) {
+        if (franchise.equals(Constants.ALL)){
+            return getOuLets();
+        }
         ArrayList<OutletModel> list = new ArrayList<>();
         try {
             JSONArray jList = this.retrieveOutlets();
@@ -73,6 +78,11 @@ public class PizzaModelManager {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public ArrayList<OutletModel> getOuLets(String franchise, String area) {
+        //TODO Implement the filter by area functionality
+        return getOuLets(franchise);
     }
 
     public ArrayList<FranchiseModel> getFranchises() {
@@ -180,4 +190,6 @@ public class PizzaModelManager {
     public boolean loadAllData() {
         return (retrieveAllInfo() != null);
     }
+
+
 }

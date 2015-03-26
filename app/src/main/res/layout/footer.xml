@@ -38,30 +38,4 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/drawer_item_height">
-
-        <ImageView
-            android:id="@+id/footer_icon2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:paddingLeft="@dimen/drawer_left"
-            android:src="@drawable/ic_help" />
-
-        <TextView
-            android:id="@+id/footer_text2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:ellipsize="end"
-            android:paddingLeft="@dimen/drawer_text_with_icon"
-            android:paddingRight="@dimen/drawer_right"
-            android:text="Feedback"
-            android:textColor="@color/text"
-            android:textSize="14sp" />
-
-    </RelativeLayout>
-
 </LinearLayout>

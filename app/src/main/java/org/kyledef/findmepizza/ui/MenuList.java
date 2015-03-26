@@ -76,4 +76,9 @@ public class MenuList extends BaseActivity implements MenuAdapter.MenuClickListe
     public void onItemClick(MenuModel menu) {
 
     }
+
+    @Override
+    protected String getScreenName(){
+        return "Menu List";
+    }
 }

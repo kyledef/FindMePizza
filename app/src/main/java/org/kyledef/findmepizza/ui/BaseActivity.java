@@ -1,5 +1,6 @@
 package org.kyledef.findmepizza.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -8,14 +9,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import org.kyledef.findmepizza.R;
+import org.kyledef.findmepizza.helper.GAnalyticsHelper;
 import org.kyledef.findmepizza.ui.fragments.NavDrawerFragment;
 
 /**
  * Created by kyle on 3/18/15.
  */
-public class BaseActivity extends ActionBarActivity implements NavDrawerFragment.NavigationDrawerCallbacks {
+public abstract class BaseActivity extends ActionBarActivity implements NavDrawerFragment.NavigationDrawerCallbacks {
 
     private NavDrawerFragment mNavigationDrawerFragment;
+
+    protected abstract String getScreenName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,13 +38,52 @@ public class BaseActivity extends ActionBarActivity implements NavDrawerFragment
     }
 
     @Override
-    public void onNavigationDrawerItemSelected(int position) {
+    protected void onResume(){
+        super.onResume();
+        GAnalyticsHelper.getInstance(this.getApplicationContext()).sendScreenView(getScreenName());
+    }
 
+    @Override
+    public void onNavigationDrawerItemSelected(int position) {
+        switch(position){
+            case 0: // Home
+                launchHome();
+                break;
+            case 1: // Recent
+                launchRecent();
+                break;
+            case 2: // Favourites
+                launchFavourites();
+                break;
+            case 3: // Settings
+                launchSettings();
+                break;
+            default:
+                launchHome();
+        }
     }
 
 
     public void restoreActionBar() {
 
+    }
+
+    private void launchHome(){
+        startActivity(new Intent(this, PizzaList.class));
+        if (this instanceof PizzaList)
+            finish();
+    }
+    
+    private void launchRecent(){
+        startActivity(new Intent(this, RecentActivity.class ));
+    }
+
+    private void launchFavourites(){
+        startActivity(new Intent(this, FavouritesActivity.class));
+    }
+
+    private void launchSettings(){
+        startActivity(new Intent(this, SettingsActivity.class ));
     }
 
 
@@ -58,8 +101,8 @@ public class BaseActivity extends ActionBarActivity implements NavDrawerFragment
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            launchSettings();
             return true;
         }
 
