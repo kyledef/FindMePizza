@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">FindMePizza</string>
+    <string name="app_name">Find Me Pizza</string>
     <string name="navigation_drawer_open">Open</string>
     <string name="navigation_drawer_close">Close</string>
 
@@ -9,19 +9,20 @@
     <string name="image_description">Logos</string>
 
     <array name="drawer_icons">
-        <item></item>
+        <item>@drawable/ic_apps</item>
+        <item>@drawable/ic_sales</item>
+        <item>@drawable/ic_bookmark</item>
     </array>
 
     <string-array name="menu_items">
         <item>Home</item>
         <item>Recent</item>
         <item>Favourites</item>
-        <item>Profile</item>
-        <item>Settings</item>
     </string-array>
 
     <string name="pizza_source">http://en.wikipedia.org/wiki/List_of_pizza_varieties_by_country#mediaviewer/File:Supreme_pizza.jpg</string>
     <string name="menu_title">Menu</string>
     <string name="name">Name</string>
+
     <string name="placeholder_text">Placeholder</string>
 </resources>

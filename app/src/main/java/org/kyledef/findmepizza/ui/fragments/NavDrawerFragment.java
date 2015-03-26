@@ -1,5 +1,6 @@
 package org.kyledef.findmepizza.ui.fragments;
 
+import android.content.res.TypedArray;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
 import android.support.v7.app.ActionBar;
@@ -24,6 +25,10 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import org.kyledef.findmepizza.R;
+import org.kyledef.findmepizza.helper.DrawerAdapter;
+import org.kyledef.findmepizza.model.NarBarItem;
+
+import java.util.ArrayList;
 
 
 public class NavDrawerFragment extends Fragment {
@@ -43,6 +48,8 @@ public class NavDrawerFragment extends Fragment {
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
     private String[] mDrawerTitles;
+    private TypedArray mDrawerIcons;
+    private ArrayList<NarBarItem> mDrawerItems;
 
     public NavDrawerFragment() {
     }
@@ -90,7 +97,7 @@ public class NavDrawerFragment extends Fragment {
         Toolbar toolbar = (Toolbar) activity.findViewById(R.id.toolbar);
         if (toolbar != null) activity.setSupportActionBar(toolbar);
 
-        mDrawerTitles = getResources().getStringArray(R.array.menu_items);
+
 
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         mTitle = mDrawerTitle = activity.getTitle();
@@ -135,6 +142,18 @@ public class NavDrawerFragment extends Fragment {
 
         mDrawerLayout.setDrawerListener(mDrawerToggle);
 
+        buildNavMenuOptions(activity);
+    }
+
+    private void buildNavMenuOptions(final ActionBarActivity activity){
+        mDrawerTitles = getResources().getStringArray(R.array.menu_items);
+        mDrawerIcons = getResources().obtainTypedArray(R.array.drawer_icons);
+        mDrawerItems = new ArrayList<>();
+
+        for (int i = 0; i < mDrawerTitles.length; i++){
+            mDrawerItems.add(new NarBarItem(mDrawerTitles[i].toString(),mDrawerIcons.getResourceId(i, 0)));
+        }
+
         LayoutInflater inflater = activity.getLayoutInflater();
         final ViewGroup header = (ViewGroup)inflater.inflate(R.layout.header, mDrawerListView, false);
         final ViewGroup footer = (ViewGroup)inflater.inflate(R.layout.footer, mDrawerListView, false);
@@ -142,7 +161,8 @@ public class NavDrawerFragment extends Fragment {
         mDrawerListView.addHeaderView(header, null, true); // true = clickable
         mDrawerListView.addFooterView(footer, null, true); // true = clickable
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity, android.R.layout.simple_list_item_1, mDrawerTitles);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, mDrawerTitles);
+        DrawerAdapter adapter = new DrawerAdapter(activity, mDrawerItems);
         mDrawerListView.setAdapter(adapter);
     }
 

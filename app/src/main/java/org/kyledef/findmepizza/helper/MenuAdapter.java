@@ -45,6 +45,10 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
         this.onItemClickListener = onItemClickListener;
     }
 
+    public interface MenuClickListener {
+        public void onItemClick(MenuModel menu);
+    }
+
     public class MenuViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name;
@@ -72,15 +76,14 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.MenuViewHolder
 
         public void bind(MenuModel menuModel) {
             this.model = menuModel;
-            name.setText(model.getName());
-            franchise.setText(model.getFranchise());
-            category.setText(model.getCategory());
-            type.setText(model.getType());
-            cost.setText(model.getCost());
-        }
-    }
+            name.setText(TextHelper.formatUserText(model.getName()));
+            franchise.setText(TextHelper.formatUserText(model.getFranchise()));
+            category.setText(TextHelper.formatUserText(model.getCategory()));
+            type.setText(TextHelper.formatUserText(model.getType()));
 
-    public interface MenuClickListener {
-        public void onItemClick(MenuModel menu);
+            String costStr = model.getCost();
+            costStr = TextHelper.convertPrice(costStr);
+            cost.setText(TextHelper.formatUserText(costStr));
+        }
     }
 }

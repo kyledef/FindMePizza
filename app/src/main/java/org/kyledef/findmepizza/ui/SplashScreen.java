@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import org.kyledef.findmepizza.R;
+import org.kyledef.findmepizza.model.PizzaModelManager;
 
 public class SplashScreen extends Activity {
 
@@ -17,6 +18,7 @@ public class SplashScreen extends Activity {
             public void run(){
                 try{
                     sleep(2 * 1000); // Just to show the splash screen for 2 seconds
+                    PizzaModelManager.getInstance(getApplicationContext()).loadAllData(); // Load data into singleton
                     startActivity(new Intent(getBaseContext(), PizzaList.class)); // Start the Main
                 }catch(Exception e){e.printStackTrace(); }
                 finish();

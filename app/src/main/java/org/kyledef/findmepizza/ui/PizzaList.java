@@ -15,14 +15,16 @@ import org.kyledef.findmepizza.model.OutletModel;
 import org.kyledef.findmepizza.model.PizzaModelManager;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 
 public class PizzaList extends BaseActivity implements OutletAdapter.OutletClickListener {
 
-    private RecyclerView recyclerView;
     public static final String TAG = "PizzaList";
     protected OutletAdapter adapter;
     protected ArrayList<OutletModel> list;
+    private RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +49,13 @@ public class PizzaList extends BaseActivity implements OutletAdapter.OutletClick
             public void run() {
                 PizzaModelManager pmm = PizzaModelManager.getInstance(getApplicationContext());
                 list.addAll(pmm.getOuLets());
+                Collections.sort(list, new Comparator<OutletModel>() {
+                    @Override
+                    public int compare(OutletModel outletModel, OutletModel outletModel2) {
+                        if (outletModel.getId() == outletModel2.getId())return 0;
+                        return outletModel.getFranchise().compareTo(outletModel2.getFranchise()) + outletModel.getName().compareTo(outletModel2.getName());
+                    }
+                });
                 adapter.addModels(list);
                 runOnUiThread(new Runnable() {
                     @Override

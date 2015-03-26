@@ -15,8 +15,8 @@ import java.util.ArrayList;
 //http://www.jayway.com/2014/12/23/android-recyclerview-simple-list/ -> Helpful for onclick binding
 public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.OutletViewHolder> {
 
-    private ArrayList<OutletModel> list;
     protected OutletClickListener onItemClickListener;
+    private ArrayList<OutletModel> list;
 
     public OutletAdapter(ArrayList<OutletModel> list) {
         this.list = list;
@@ -48,6 +48,10 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.OutletView
         return this;
     }
 
+    public interface OutletClickListener {
+        public void onItemClick(OutletModel outlet);
+    }
+
     public class OutletViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView name;
@@ -72,10 +76,10 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.OutletView
 
         public void bind(OutletModel model) {
             this.model = model;
-            name.setText(model.getName());
-            address.setText(model.getAddress());
+            name.setText(TextHelper.formatUserText(model.getName()));
+            address.setText(TextHelper.formatUserText(model.getAddress()));
             phone1.setText(model.getContact());
-            franchise.setText(model.getFranchise());
+            franchise.setText(TextHelper.formatUserText(model.getFranchise()));
             logo.setImageResource(model.getLogoR());
         }
 
@@ -85,9 +89,5 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.OutletView
                 onItemClickListener.onItemClick(model); // run the onItemClickListener for the current viewholder that has a model which received the click
             }
         }
-    }
-
-    public interface OutletClickListener {
-        public void onItemClick(OutletModel outlet);
     }
 }

@@ -15,6 +15,8 @@ import org.kyledef.findmepizza.model.OutletModel;
 import org.kyledef.findmepizza.model.PizzaModelManager;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class MenuList extends BaseActivity implements MenuAdapter.MenuClickListener {
 
@@ -52,6 +54,13 @@ public class MenuList extends BaseActivity implements MenuAdapter.MenuClickListe
             public void run() {
                 PizzaModelManager pmm = PizzaModelManager.getInstance(getApplicationContext());
                 list.addAll(pmm.getMenus(franchise));
+                Collections.sort(list, new Comparator<MenuModel>() {
+                    @Override
+                    public int compare(MenuModel menuModel, MenuModel menuModel2) {
+                        if (menuModel.getId() == menuModel2.getId())return 0;
+                        return menuModel.getName().compareTo(menuModel2.getName());
+                    }
+                });
                 adapter.addModels(list);
                 runOnUiThread(new Runnable() {
                     @Override

@@ -6,13 +6,27 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class OutletModel implements Parcelable {
+    public static final Parcelable.Creator<OutletModel> CREATOR = new Parcelable.Creator<OutletModel>() {
+
+        @Override
+        public OutletModel createFromParcel(Parcel source) {
+            return new OutletModel(source);
+        }
+
+        @Override
+        public OutletModel[] newArray(int size) {
+            return new OutletModel[size];
+        }
+    };
+    int id;
     String name;
     String address;
     String[] contacts;
     String franchise;
     int logoR;
 
-    public OutletModel(String name, String address, String franchise, int logo, String... contacts) {
+    public OutletModel(int id, String name, String address, String franchise, int logo, String... contacts) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.contacts = contacts;
@@ -27,9 +41,10 @@ public class OutletModel implements Parcelable {
         this.address = strArr[1];
         this.franchise = strArr[3];
 
-        int[] intArr = new int[1];
+        int[] intArr = new int[2];
         parcel.readIntArray(intArr);
-        this.logoR = intArr[0];
+        this.id = intArr[0];
+        this.logoR = intArr[1];
 
         Bundle b = parcel.readBundle();
         if (b != null) this.contacts = b.getStringArray("contacts");
@@ -37,6 +52,10 @@ public class OutletModel implements Parcelable {
             this.contacts = new String[1];
             this.contacts[0] = strArr[2];
         }
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getName() {
@@ -76,22 +95,9 @@ public class OutletModel implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeStringArray(new String[]{name, address, contacts[0], franchise});
-        dest.writeIntArray(new int[]{logoR});
+        dest.writeIntArray(new int[]{id, logoR});
         Bundle b = new Bundle();
         b.putStringArray("contacts", contacts);
         dest.writeBundle(b);
     }
-
-    public static final Parcelable.Creator<OutletModel> CREATOR = new Parcelable.Creator<OutletModel>() {
-
-        @Override
-        public OutletModel createFromParcel(Parcel source) {
-            return new OutletModel(source);
-        }
-
-        @Override
-        public OutletModel[] newArray(int size) {
-            return new OutletModel[size];
-        }
-    };
 }

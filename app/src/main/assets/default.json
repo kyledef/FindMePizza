@@ -1,672 +1,778 @@
-{ 
-	"franchises": [
-		{
-			"name" : "Pizza Hut",
-			"logo" : "pizza_hut.jpg",
-			"url"	 : "http://www.pizzahut-tt.com/",
-			"shortcode": "pizzahut"
-		},
-		 {
-			"name" : "Dominos Pizza",
-			"logo" : "dominos_pizza.jpg",
-			"url"	 : "https://www.facebook.com/sharedominostnt/",
-			"shortcode": "dominos"
-		},
-		{
-			"name" : "Mario's Pizza",
-			"logo" : "marios.jpg",
-			"url"	 : "http://www.mymarios.com/",
-			"shortcode": "marios"
-		},
-		{
-			"name" : "Pizza Boys",
-			"logo" : "pizza_boys.jpg",
-			"url"	 : "http://pizzaboys.com/pizzaboys/",
-			"shortcode": "pizzaboys"
-		},
-		{
-			"name" : "Papa John Pizza",
-			"logo" : "papajohn.png",
-			"url"	 : "http://papajohnstt.com/",
-			"shortcode": "papajohn"
-		},
-		{
-			"name" : "Joe's Pizza",
-			"logo" : "joespizza.png",
-			"shortcode": "joespizza"
-		},
-		{
-			"name" : "La Cantina",
-			"logo" : "lacantina.png",
-			"url"	 : "http://www.lacantinapizzeria.com/",
-			"shortcode": "lacantina"
-		}
-	],
-	"menus":[
-		{
-			"franchise" : "pizzahut",
-			"item"			: "Pepperoni Lover's",
-			"category"	: "specialty",
-			"type"			: "meat",
-			"cost"			: "medium 110 large 120 stuffed crust 135"
-		},
-		{
-			"franchise" : "pizzahut",
-			"item"			: "Meat Lover's",
-			"category"	: "specialty",
-			"type"			: "meat",
-			"cost"			: "medium 110 large 120 stuffed crust 135"
-		},
-		{
-			"franchise" : "pizzahut",
-			"item"			: "Supreme Lover's",
-			"category"	: "specialty",
-			"cost"			: "medium 110 large 120 stuffed crust 135"
-		},
-		{
-			"franchise" : "pizzahut",
-			"item"			: "Veggie Lovers",
-			"category"	: "specialty",
-			"type"			: "veggie",
-			"cost"			: "medium 100 large 110 stuffed crust 120"
-		},
-		{
-			"franchise" : "pizzahut",
-			"item"			: "Chicken Supreme",
-			"category"	: "signature",
-			"cost"			: "medium 115 large 120 stuffed crust 135"
-		},
-		{
-			"franchise" : "pizzahut",
-			"item"			: "Super Supreme",
-			"category"	: "signature",
-			"cost"			: "medium 120 large 130 stuffed crust 140"
-		},
-		{
-			"franchise" : "pizzahut",
-			"item"			: "Chicken BBQ",
-			"category"	: "signature",
-			"cost"			: "medium 115 large 125 stuffed crust 135"
-		},
-		{
-			"franchise" : "pizzahut",
-			"item"			: "Hawaiian Luau",
-			"category"	: "classic",
-			"cost"			: "medium 110 large 115 stuffed crust 135"
-		},
-		{
-			"franchise" : "pizzahut",
-			"item"			: "Spicy Sicilian",
-			"category"	: "classic",
-			"cost"			: "medium 110 large 115 stuffed crust 135"
-		},
-		{
-			"franchise" : "pizzahut",
-			"item"			: "Garden Delight",
-			"category"	: "classic",
-			"type"			: "veggie",
-			"cost"			: "medium 110 large 115 stuffed crust 135"
-		},
-		{
-			"franchise" : "pizzahut",
-			"item"			: "Sante Fe Pizza",
-			"category"	: "classic",
-			"cost"			: "medium 110 large 115 stuffed crust 135"
-		},
-		{
-			"franchise" : "pizzahut",
-			"item"			: "Tropical Chicken",
-			"category"	: "classic",
-			"cost"			: "medium 110 large 115 stuffed crust 135"
-		},
-		{
-			"franchise" : "pizzahut",
-			"item"			: "Texas BBQ",
-			"category"	: "classic",
-			"cost"			: "medium 110 large 115 stuffed crust 135"
-		},
-		{
-			"franchise" : "marios",
-			"item"			: "Tropical Chicken",
-			"category"	: "specialty",
-			"cost"			: "mini 35 small 55 medium 80 family 100"
-		},
-		{
-			"franchise" : "marios",
-			"item"			: "Extravaganzza",
-			"category"	: "specialty",
-			"cost"			: "mini 35 small 55 medium 80 family 100"
-		},
-		{
-			"franchise" : "marios",
-			"item"			: "Meatzza",
-			"category"	: "specialty",
-			"type"			: "meat",
-			"cost"			: "mini 35 small 55 medium 80 family 100"
-		},
-		{
-			"franchise" : "marios",
-			"item"			: "Hawaiian",
-			"category"	: "specialty",
-			"cost"			: "mini 35 small 55 medium 80 family 100"
-		},
-		{
-			"franchise" : "marios",
-			"item"			: "Mexican",
-			"category"	: "specialty",
-			"cost"			: "mini 35 small 55 medium 80 family 100"
-		},
-		{
-			"franchise" : "marios",
-			"item"			: "BBQ Chicken",
-			"category"	: "specialty",
-			"cost"			: "mini 35 small 55 medium 80 family 100"
-		},
-		{
-			"franchise" : "marios",
-			"item"			: "Farm",
-			"category"	: "specialty",
-			"cost"			: "mini 35 small 55 medium 80 family 100"
-		},
-		{
-			"franchise" : "marios",
-			"item"			: "Pepperoni Feast",
-			"category"	: "specialty",
-			"type"			: "meat",
-			"cost"			: "mini 35 small 55 medium 80 family 100"
-		},
-		{
-			"franchise" : "marios",
-			"item"			: "Veggie Deluxe",
-			"category"	: "specialty",
-			"type"			: "veggie",
-			"cost"			: "mini 35 small 55 medium 80 family 100"
-		},
-		{
-			"franchise" : "marios",
-			"item"			: "New Yorker",
-			"category"	: "specialty",
-			"cost"			: "mini 35 small 55 medium 80 family 100"
-		},
-		{
-			"franchise" : "marios",
-			"item"			: "Spicy Pizza",
-			"category"	: "specialty",
-			"cost"			: "mini 35 small 55 medium 80 family 100"
-		},
-		{
-			"franchise" : "marios",
-			"item"			: "Italian Supreme",
-			"category"	: "specialty",
-			"cost"			: "mini 35 small 55 medium 80 family 100"
-		},
-		{
-			"franchise" : "marios",
-			"item"			: "Manzo Supremo",
-			"category"	: "specialty",
-			"cost"			: "mini 38 small 55 medium 85 family 105"
-		},
-		{
-			"franchise" : "marios",
-			"item"			: "Veggie Mozza",
-			"category"	: "specialty",
-			"type"			: "veggie",
-			"cost"			: "mini 38 small 55 medium 85 family 105"
-		},
-		{
-			"franchise" : "marios",
-			"item"			: "Capo de Pollo",
-			"category"	: "specialty",
-			"cost"			: "mini 38 small 55 medium 85 family 105"
-		},
-		{
-			"franchise" : "dominos",
-			"item"			: "Farm Fest",
-			"category"	: "house specialty",
-			"type"			: "veggie",
-			"cost"			: "medium 110 large 125"
-		},
-		{
-			"franchise" : "dominos",
-			"item"			: "Veggie Mix",
-			"category"	: "house specialty",
-			"type"			: "veggie",
-			"cost"			: "medium 110 large 125"
-		},
-		{
-			"franchise" : "dominos",
-			"item"			: "Veggie Extravaganza",
-			"category"	: "house specialty",
-			"type"			: "veggie",
-			"cost"			: "medium 110 large 125"
-		},
-		{
-			"franchise" : "dominos",
-			"item"			: "Mexicana",
-			"category"	: "house specialty",
-			"type"			: "veggie",
-			"cost"			: "medium 110 large 125"
-		},
-		{
-			"franchise" : "dominos",
-			"item"			: "Meat Mix",
-			"category"	: "house specialty",
-			"type"			: "meat",
-			"cost"			: "medium 110 large 125"
-		},
-		{
-			"franchise" : "dominos",
-			"item"			: "Trini Mix",
-			"category"	: "house specialty",
-			"cost"			: "medium 110 large 125"
-		},
-		{
-			"franchise" : "dominos",
-			"item"			: "Hawaiian Mix",
-			"category"	: "house specialty",
-			"cost"			: "medium 110 large 125"
-		},
-		{
-			"franchise" : "dominos",
-			"item"			: "Deluxe",
-			"category"	: "dominos gourmet",
-			"cost"			: "medium 119 large 135"
-		},
-		{
-			"franchise" : "dominos",
-			"item"			: "Ultimate Pepperoni",
-			"category"	: "dominos gourmet",
-			"cost"			: "medium 119 large 135"
-		},
-		{
-			"franchise" : "dominos",
-			"item"			: "ExtravaganZZa",
-			"category"	: "dominos gourmet",
-			"cost"			: "medium 119 large 135"
-		},
-		{
-			"franchise" : "papajohn",
-			"item"			: "Cheese Pizza",
-			"category"	: "classic",
-			"type"			: "veggie",
-			"cost"			: "small 40 medium 65 large 135 x-large 80 thin-crust 75"
-		},
-		{
-			"franchise" : "papajohn",
-			"item"			: "Amigo",
-			"category"	: "classic",
-			"type"			: "veggie",
-			"cost"			: "small 65 medium 80 large 95 x-large 100 thin-crust 95"
-		},
-		{
-			"franchise" : "papajohn",
-			"item"			: "Garden Special",
-			"category"	: "classic",
-			"type"			: "veggie",
-			"cost"			: "small 60 medium 90 large 100 x-large 105 thin-crust 100"
-		},
-		{
-			"franchise" : "papajohn",
-			"item"			: "Pepperoni",
-			"category"	: "classic",
-			"cost"			: "small 60 medium 85 large 95 x-large 100 thin-crust 95"
-		},
-		{
-			"franchise" : "papajohn",
-			"item"			: "Hawaiian",
-			"category"	: "classic",
-			"cost"			: "small 60 medium 85 large 95 x-large 105 thin-crust 95"
-		},
-		{
-			"franchise" : "papajohn",
-			"item"			: "Island Spice",
-			"category"	: "classic",
-			"cost"			: "small 60 medium 80 large 90 x-large 95 thin-crust 90"
-		},
-		{
-			"franchise" : "papajohn",
-			"item"			: "Chicken Florentine",
-			"category"	: "classic",
-			"cost"			: "small 60 medium 90 large 110 x-large 115 thin-crust 110"
-		},
-		{
-			"franchise" : "papajohn",
-			"item"			: "Chicken Deluxe",
-			"category"	: "specialty",
-			"cost"			: "small 65 medium 90 large 110 x-large 115 thin-crust 110"
-		},
-		{
-			"franchise" : "papajohn",
-			"item"			: "Ham Hawaiian",
-			"category"	: "specialty",
-			"cost"			: "small 65 medium 95 large 110 x-large 115 thin-crust 110"
-		},
-		{
-			"franchise" : "papajohn",
-			"item"			: "Green Garden Delight",
-			"category"	: "specialty",
-			"type"			: "veggie",
-			"cost"			: "small 65 medium 85 large 95 x-large 100 thin-crust 95"
-		},
-		{
-			"franchise" : "papajohn",
-			"item"			: "The Works",
-			"category"	: "specialty",
-			"cost"			: "small 65 medium 95 large 115 x-large 120 thin-crust 115"
-		},
-		{
-			"franchise" : "papajohn",
-			"item"			: "The Meats",
-			"category"	: "specialty",
-			"type"			: "meat",
-			"cost"			: "small 65 medium 99 large 115 x-large 125 thin-crust 115"
-		},
-		{
-			"franchise" : "papajohn",
-			"item"			: "Chicken BBQ",
-			"category"	: "specialty",
-			"cost"			: "small 65 medium 90 large 105 x-large 115 thin-crust 105"
-		},
-		{
-			"franchise" : "papajohn",
-			"item"			: "The Works",
-			"category"	: "specialty",
-			"cost"			: "small 65 medium 95 large 115 x-large 120 thin-crust 115"
-		},
-		{
-			"franchise" : "papajohn",
-			"item"			: "Smoke House Bacon & Ham",
-			"category"	: "promotional",
-			"cost"			: "large 110"
-		},
-		{
-			"franchise" : "papajohn",
-			"item"			: "BBQ Cheeseburger",
-			"category"	: "promotional",
-			"cost"			: "large 110"
-		},
-		{
-			"franchise" : "papajohn",
-			"item"			: "John's Favourite",
-			"category"	: "signature",
-			"cost"			: "small 60 medium 90 large 110 x-large 115 thin-crust 110"
-		},
-		{
-			"franchise" : "pizzaboys",
-			"item"			: "Trini Pizza Eh",
-			"category"	: "specialty"
-		},
-		{
-			"franchise" : "pizzaboys",
-			"item"			: "Meat Supreme",
-			"category"	: "specialty"
-		},
-		{
-			"franchise" : "pizzaboys",
-			"item"			: "Spicy BBQ",
-			"category"	: "specialty"
-		},
-		{
-			"franchise" : "pizzaboys",
-			"item"			: "Buffalo Chicken",
-			"category"	: "specialty"
-		},
-		{
-			"franchise" : "pizzaboys",
-			"item"			: "Bacon Double Cheeseburger",
-			"category"	: "specialty"
-		},
-		{
-			"franchise" : "pizzaboys",
-			"item"			: "Bacon Chicken Mushroom Melt",
-			"category"	: "specialty"
-		},
-		{
-			"franchise" : "pizzaboys",
-			"item"			: "Hawaiian",
-			"category"	: "specialty"
-		},
-		{
-			"franchise" : "pizzaboys",
-			"item"			: "Supreme",
-			"category"	: "specialty"
-		},
-		{
-			"franchise" : "pizzaboys",
-			"item"			: "Garden Veggie",
-			"category"	: "specialty"
-		},
-		{
-			"franchise" : "pizzaboys",
-			"item"			: "Super Supreme",
-			"category"	: "specialty"
-		}
-	],
-	"outlets":[
-		{
-			"name" : "Pizza Hut Roxy",
-			"address": "Damian Street & Western Main Road, Woodbrook, Port of Spain",
-			"phone1": "628-1488",
-			"franchise": "pizzahut"
-		},
-		{
-			"name" : "Pizza Hut Trincity",
-			"address": "Pizza Hut Trincity, 2nd Floor Trincity Mall",
-			"phone1": "640-1488",
-			"franchise": "pizzahut"
-		},
-		{
-			"name" : "Pizza Hut Valsayn",
-			"address": "Pizza Hut Valsayn, Churchill Roosevelt Highway & Southern Main Road",
-			"phone1": "662-1488",
-			"franchise": "pizzahut"
-		},
-		{
-			"name" : "Pizza Hut Price Plaza",
-			"address": "Pizza Hut Price Plaza, Price Plaza Chaguanas",
-			"phone1": "672-1488",
-			"franchise": "pizzahut"
-		},
-		{
-			"name" : "Pizza Hut Windsor",
-			"address": "Pizza Hut Windsor, Hollis Avenue, Arima",
-			"phone1": "664-1488",
-			"franchise": "pizzahut"
-		},
-		{
-			"name" : "Pizza Hut Gulf View",
-			"address": "Pizza Hut Gulf View, La Romain",
-			"phone1": "653-1488",
-			"franchise": "pizzahut"
-		},
-		{
-			"name" : "Pizza Hut Lowlands",
-			"address": "Pizza Hut Lowlands, Gulf City Lowlands Mall, Tobago",
-			"phone1": "660-1488",
-			"franchise": "pizzahut"
-		},
-		{
-			"name" 		: "Dominos - Aripita",
-			"address"	: "Aripita, Port of Spain",
-			"phone1"	: "624-0555",
-			"hours"		: "sunday - thursday : 11am to 11pm, friday & saturday : 11am to 10pm",
-			"franchise": "dominos"
-		},
-		{
-			"name" 		: "Dominos - Chaguanas",
-			"address"	: "Chaguanas",
-			"phone1"	: "665-0555",
-			"hours"		: "monday - sunday : 11am to 10pm",
-			"franchise": "dominos"
-		},
-		 {
-			"name" 		: "Papa John - Chaguanas",
-			"address"	: "11 Southern main Rd Chaguanas",
-			"phone1"	: "665-7272",
-			"phone2"	: "354-6563",
-			"hours"		: "10am to 10pm",
-			"franchise": "papajohn"
-		},
-		{
-			"name" 		: "Papa John - Curepe",
-			"address"	: "Eastern Main Rd & Riverside Rd Curepe",
-			"phone1"	: "662-7272",
-			"hours"		: "11am to 11pm",
-			"franchise": "papajohn"
-		},
-		{
-			"name" 		: "Papa John - El Socorro",
-			"address"	: "Fifth Street, San Juan",
-			"phone1"	: "674-7272",
-			"hours"		: "11am to 11pm",
-			"franchise": "papajohn"
-		},
-		{
-			"name" 		: "Papa John - St James",
-			"address"	: "31 Mucurapo Rd St James",
-			"phone1"	: "629-7272",
-			"hours"		: "11am to 11pm",
-			"franchise": "papajohn"
-		},
-		{
-			"name" 		: "Papa John - Maraval",
-			"address"	: "#3 Saddle Road",
-			"phone1"	: "622-7272",
-			"hours"		: "11am to 11pm",
-			"franchise": "papajohn"
-		},
-		 {
-			"name" 		: "Papa John - Gulf City",
-			"address"	: "Gulf City Shopping Complex",
-			"phone1"	: "657-7272",
-			"hours"		: "11am to 11pm",
-			"franchise": "papajohn"
-		},
-		{
-			"name" 		: "Mario's - O'meara Rd",
-			"address"	: "O'meara Road, Arima",
-			"phone1"	: "298-1817",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - Chaguanas Main Road",
-			"address"	: "Main Road, Chaguanas",
-			"phone1"	: "672-5464",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - Chaguanas Mid Centre Mall",
-			"address"	: "Mid Centre Mall, Chaguanas",
-			"phone1"	: "665-5464",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - Montrose",
-			"address"	: "Montrose, Chaguanas",
-			"phone1"	: "671-5464",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - UWI",
-			"address"	: "UWI St Augustine",
-			"phone1"	: "662-5464",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - Valpark",
-			"address"	: "Valpark Shopping Plaza, Valsayn",
-			"phone1"	: "645-5464",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - Trincity",
-			"address"	: "Trincity Mall, Trincity",
-			"phone1"	: "360-0301",
-			"phone2"	: "365-5464",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - West Mall",
-			"address"	: "Western Main Rd, Westmoorings",
-			"phone1"	: "360-0315",
-			"phone2"	: "387-0119",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - St Augustine",
-			"address"	: "Eastern Main Road, St. Augustine",
-			"phone1"	: "360-0299",
-			"phone2"	: "351-5464",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - Sangre Grande",
-			"address"	: "Eastern Main Rd, Sangre Grande",
-			"phone1"	: "360-0312",
-			"phone2"	: "387-0186",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - San Juan",
-			"address"	: "Eastern Main Road, San Juan",
-			"phone1"	: "360-0304",
-			"phone2"	: "360-5464",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - Marabella",
-			"address"	: "Gopaul Lands, Marabella Roundabout, Marabella",
-			"phone1"	: "360-0296",
-			"phone2"	: "387-0174",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - Independence Square",
-			"address"	: "Independence Square, Port of Spain",
-			"phone1"	: "360-0305",
-			"phone2"	: "365-5464",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - Cipriani Boulevard",
-			"address"	: "Cipriani Blvd & Tragarete Rd, Port of Spain",
-			"phone1"	: "360-0314",
-			"phone2"	: "355-5464",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - City Gate",
-			"address"	: "South Quay, Port of Spain",
-			"phone1"	: "360-0303",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - Couva",
-			"address"	: "Main Road, Couva",
-			"phone1"	: "290-7360",
-			"phone2"	: "387-0896",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - El Dorado",
-			"address"	: "Eastern Main Road, El Dorado",
-			"phone1"	: "387-0601",
-			"phone2"	: "387-0603",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - Ellerslie Plaza",
-			"address"	: "Ellerslie Plaza, Maraval",
-			"phone1"	: "360-0302",
-			"phone2"	: "387-0124",
-			"franchise": "marios"
-		},
-		{
-			"name" 		: "Mario's - Gasparillo",
-			"address"	: "LP#5 Bonne Aventure Road, Gasparillo",
-			"phone1"	: "360-0306",
-			"phone2"	: "387-0172",
-			"franchise": "marios"
-		}
-	]
+{
+    "franchises": [
+        {
+            "name": "Pizza Hut",
+            "logo": "pizza_hut.jpg",
+            "url": "http://www.pizzahut-tt.com/",
+            "shortcode": "pizzahut",
+            "id": 1
+        },
+        {
+            "name": "Dominos Pizza",
+            "logo": "dominos_pizza.jpg",
+            "url": "https://www.facebook.com/sharedominostnt/",
+            "shortcode": "dominos",
+            "id": 2
+        },
+        {
+            "name": "Mario's Pizza",
+            "logo": "marios.jpg",
+            "url": "http://www.mymarios.com/",
+            "shortcode": "marios",
+            "id": 3
+        },
+        {
+            "name": "Pizza Boys",
+            "logo": "pizza_boys.jpg",
+            "url": "http://pizzaboys.com/pizzaboys/",
+            "shortcode": "pizzaboys",
+            "id": 4
+        },
+        {
+            "name": "Papa John Pizza",
+            "logo": "papajohn.png",
+            "url": "http://papajohnstt.com/",
+            "shortcode": "papajohn",
+            "id": 5
+        },
+        {
+            "name": "Joe's Pizza",
+            "logo": "joespizza.png",
+            "shortcode": "joespizza",
+            "id": 6
+        },
+        {
+            "name": "La Cantina",
+            "logo": "lacantina.png",
+            "url": "http://www.lacantinapizzeria.com/",
+            "shortcode": "lacantina",
+            "id": 7
+        }
+    ],
+    "menus": [
+        {
+            "franchise": "pizzahut",
+            "item": "Pepperoni Lover's",
+            "category": "specialty",
+            "type": "meat",
+            "cost": "medium 110 large 120 stuffed crust 135",
+            "id": 1
+        },
+        {
+            "franchise": "pizzahut",
+            "item": "Meat Lover's",
+            "category": "specialty",
+            "type": "meat",
+            "cost": "medium 110 large 120 stuffed crust 135",
+            "id": 2
+        },
+        {
+            "franchise": "pizzahut",
+            "item": "Supreme Lover's",
+            "category": "specialty",
+            "cost": "medium 110 large 120 stuffed crust 135",
+            "id": 3
+        },
+        {
+            "franchise": "pizzahut",
+            "item": "Veggie Lovers",
+            "category": "specialty",
+            "type": "veggie",
+            "cost": "medium 100 large 110 stuffed crust 120",
+            "id": 4
+        },
+        {
+            "franchise": "pizzahut",
+            "item": "Chicken Supreme",
+            "category": "signature",
+            "cost": "medium 115 large 120 stuffed crust 135",
+            "id": 5
+        },
+        {
+            "franchise": "pizzahut",
+            "item": "Super Supreme",
+            "category": "signature",
+            "cost": "medium 120 large 130 stuffed crust 140",
+            "id": 6
+        },
+        {
+            "franchise": "pizzahut",
+            "item": "Chicken BBQ",
+            "category": "signature",
+            "cost": "medium 115 large 125 stuffed crust 135",
+            "id": 7
+        },
+        {
+            "franchise": "pizzahut",
+            "item": "Hawaiian Luau",
+            "category": "classic",
+            "cost": "medium 110 large 115 stuffed crust 135",
+            "id": 8
+        },
+        {
+            "franchise": "pizzahut",
+            "item": "Spicy Sicilian",
+            "category": "classic",
+            "cost": "medium 110 large 115 stuffed crust 135",
+            "id": 9
+        },
+        {
+            "franchise": "pizzahut",
+            "item": "Garden Delight",
+            "category": "classic",
+            "type": "veggie",
+            "cost": "medium 110 large 115 stuffed crust 135",
+            "id": 10
+        },
+        {
+            "franchise": "pizzahut",
+            "item": "Sante Fe Pizza",
+            "category": "classic",
+            "cost": "medium 110 large 115 stuffed crust 135",
+            "id": 11
+        },
+        {
+            "franchise": "pizzahut",
+            "item": "Tropical Chicken",
+            "category": "classic",
+            "cost": "medium 110 large 115 stuffed crust 135",
+            "id": 12
+        },
+        {
+            "franchise": "pizzahut",
+            "item": "Texas BBQ",
+            "category": "classic",
+            "cost": "medium 110 large 115 stuffed crust 135",
+            "id": 13
+        },
+        {
+            "franchise": "marios",
+            "item": "Tropical Chicken",
+            "category": "specialty",
+            "cost": "mini 35 small 55 medium 80 family 100",
+            "id": 14
+        },
+        {
+            "franchise": "marios",
+            "item": "Extravaganzza",
+            "category": "specialty",
+            "cost": "mini 35 small 55 medium 80 family 100",
+            "id": 15
+        },
+        {
+            "franchise": "marios",
+            "item": "Meatzza",
+            "category": "specialty",
+            "type": "meat",
+            "cost": "mini 35 small 55 medium 80 family 100",
+            "id": 16
+        },
+        {
+            "franchise": "marios",
+            "item": "Hawaiian",
+            "category": "specialty",
+            "cost": "mini 35 small 55 medium 80 family 100",
+            "id": 17
+        },
+        {
+            "franchise": "marios",
+            "item": "Mexican",
+            "category": "specialty",
+            "cost": "mini 35 small 55 medium 80 family 100",
+            "id": 18
+        },
+        {
+            "franchise": "marios",
+            "item": "BBQ Chicken",
+            "category": "specialty",
+            "cost": "mini 35 small 55 medium 80 family 100",
+            "id": 19
+        },
+        {
+            "franchise": "marios",
+            "item": "Farm",
+            "category": "specialty",
+            "cost": "mini 35 small 55 medium 80 family 100",
+            "id": 20
+        },
+        {
+            "franchise": "marios",
+            "item": "Pepperoni Feast",
+            "category": "specialty",
+            "type": "meat",
+            "cost": "mini 35 small 55 medium 80 family 100",
+            "id": 21
+        },
+        {
+            "franchise": "marios",
+            "item": "Veggie Deluxe",
+            "category": "specialty",
+            "type": "veggie",
+            "cost": "mini 35 small 55 medium 80 family 100",
+            "id": 22
+        },
+        {
+            "franchise": "marios",
+            "item": "New Yorker",
+            "category": "specialty",
+            "cost": "mini 35 small 55 medium 80 family 100",
+            "id": 23
+        },
+        {
+            "franchise": "marios",
+            "item": "Spicy Pizza",
+            "category": "specialty",
+            "cost": "mini 35 small 55 medium 80 family 100",
+            "id": 24
+        },
+        {
+            "franchise": "marios",
+            "item": "Italian Supreme",
+            "category": "specialty",
+            "cost": "mini 35 small 55 medium 80 family 100",
+            "id": 25
+        },
+        {
+            "franchise": "marios",
+            "item": "Manzo Supremo",
+            "category": "specialty",
+            "cost": "mini 38 small 55 medium 85 family 105",
+            "id": 26
+        },
+        {
+            "franchise": "marios",
+            "item": "Veggie Mozza",
+            "category": "specialty",
+            "type": "veggie",
+            "cost": "mini 38 small 55 medium 85 family 105",
+            "id": 27
+        },
+        {
+            "franchise": "marios",
+            "item": "Capo de Pollo",
+            "category": "specialty",
+            "cost": "mini 38 small 55 medium 85 family 105",
+            "id": 28
+        },
+        {
+            "franchise": "dominos",
+            "item": "Farm Fest",
+            "category": "house specialty",
+            "type": "veggie",
+            "cost": "medium 110 large 125",
+            "id": 29
+        },
+        {
+            "franchise": "dominos",
+            "item": "Veggie Mix",
+            "category": "house specialty",
+            "type": "veggie",
+            "cost": "medium 110 large 125",
+            "id": 30
+        },
+        {
+            "franchise": "dominos",
+            "item": "Veggie Extravaganza",
+            "category": "house specialty",
+            "type": "veggie",
+            "cost": "medium 110 large 125",
+            "id": 31
+        },
+        {
+            "franchise": "dominos",
+            "item": "Mexicana",
+            "category": "house specialty",
+            "type": "veggie",
+            "cost": "medium 110 large 125",
+            "id": 32
+        },
+        {
+            "franchise": "dominos",
+            "item": "Meat Mix",
+            "category": "house specialty",
+            "type": "meat",
+            "cost": "medium 110 large 125",
+            "id": 33
+        },
+        {
+            "franchise": "dominos",
+            "item": "Trini Mix",
+            "category": "house specialty",
+            "cost": "medium 110 large 125",
+            "id": 34
+        },
+        {
+            "franchise": "dominos",
+            "item": "Hawaiian Mix",
+            "category": "house specialty",
+            "cost": "medium 110 large 125",
+            "id": 35
+        },
+        {
+            "franchise": "dominos",
+            "item": "Deluxe",
+            "category": "dominos gourmet",
+            "cost": "medium 119 large 135",
+            "id": 36
+        },
+        {
+            "franchise": "dominos",
+            "item": "Ultimate Pepperoni",
+            "category": "dominos gourmet",
+            "cost": "medium 119 large 135",
+            "id": 37
+        },
+        {
+            "franchise": "dominos",
+            "item": "ExtravaganZZa",
+            "category": "dominos gourmet",
+            "cost": "medium 119 large 135",
+            "id": 38
+        },
+        {
+            "franchise": "papajohn",
+            "item": "Cheese Pizza",
+            "category": "classic",
+            "type": "veggie",
+            "cost": "small 40 medium 65 large 135 x-large 80 thin-crust 75",
+            "id": 39
+        },
+        {
+            "franchise": "papajohn",
+            "item": "Amigo",
+            "category": "classic",
+            "type": "veggie",
+            "cost": "small 65 medium 80 large 95 x-large 100 thin-crust 95",
+            "id": 40
+        },
+        {
+            "franchise": "papajohn",
+            "item": "Garden Special",
+            "category": "classic",
+            "type": "veggie",
+            "cost": "small 60 medium 90 large 100 x-large 105 thin-crust 100",
+            "id": 41
+        },
+        {
+            "franchise": "papajohn",
+            "item": "Pepperoni",
+            "category": "classic",
+            "cost": "small 60 medium 85 large 95 x-large 100 thin-crust 95",
+            "id": 42
+        },
+        {
+            "franchise": "papajohn",
+            "item": "Hawaiian",
+            "category": "classic",
+            "cost": "small 60 medium 85 large 95 x-large 105 thin-crust 95",
+            "id": 43
+        },
+        {
+            "franchise": "papajohn",
+            "item": "Island Spice",
+            "category": "classic",
+            "cost": "small 60 medium 80 large 90 x-large 95 thin-crust 90",
+            "id": 44
+        },
+        {
+            "franchise": "papajohn",
+            "item": "Chicken Florentine",
+            "category": "classic",
+            "cost": "small 60 medium 90 large 110 x-large 115 thin-crust 110",
+            "id": 45
+        },
+        {
+            "franchise": "papajohn",
+            "item": "Chicken Deluxe",
+            "category": "specialty",
+            "cost": "small 65 medium 90 large 110 x-large 115 thin-crust 110",
+            "id": 46
+        },
+        {
+            "franchise": "papajohn",
+            "item": "Ham Hawaiian",
+            "category": "specialty",
+            "cost": "small 65 medium 95 large 110 x-large 115 thin-crust 110",
+            "id": 47
+        },
+        {
+            "franchise": "papajohn",
+            "item": "Green Garden Delight",
+            "category": "specialty",
+            "type": "veggie",
+            "cost": "small 65 medium 85 large 95 x-large 100 thin-crust 95",
+            "id": 48
+        },
+        {
+            "franchise": "papajohn",
+            "item": "The Works",
+            "category": "specialty",
+            "cost": "small 65 medium 95 large 115 x-large 120 thin-crust 115",
+            "id": 49
+        },
+        {
+            "franchise": "papajohn",
+            "item": "The Meats",
+            "category": "specialty",
+            "type": "meat",
+            "cost": "small 65 medium 99 large 115 x-large 125 thin-crust 115",
+            "id": 50
+        },
+        {
+            "franchise": "papajohn",
+            "item": "Chicken BBQ",
+            "category": "specialty",
+            "cost": "small 65 medium 90 large 105 x-large 115 thin-crust 105",
+            "id": 51
+        },
+        {
+            "franchise": "papajohn",
+            "item": "The Works",
+            "category": "specialty",
+            "cost": "small 65 medium 95 large 115 x-large 120 thin-crust 115",
+            "id": 52
+        },
+        {
+            "franchise": "papajohn",
+            "item": "Smoke House Bacon & Ham",
+            "category": "promotional",
+            "cost": "large 110",
+            "id": 53
+        },
+        {
+            "franchise": "papajohn",
+            "item": "BBQ Cheeseburger",
+            "category": "promotional",
+            "cost": "large 110",
+            "id": 54
+        },
+        {
+            "franchise": "papajohn",
+            "item": "John's Favourite",
+            "category": "signature",
+            "cost": "small 60 medium 90 large 110 x-large 115 thin-crust 110",
+            "id": 55
+        },
+        {
+            "franchise": "pizzaboys",
+            "item": "Trini Pizza Eh",
+            "category": "specialty",
+            "id": 56
+        },
+        {
+            "franchise": "pizzaboys",
+            "item": "Meat Supreme",
+            "category": "specialty",
+            "id": 57
+        },
+        {
+            "franchise": "pizzaboys",
+            "item": "Spicy BBQ",
+            "category": "specialty",
+            "id": 58
+        },
+        {
+            "franchise": "pizzaboys",
+            "item": "Buffalo Chicken",
+            "category": "specialty",
+            "id": 59
+        },
+        {
+            "franchise": "pizzaboys",
+            "item": "Bacon Double Cheeseburger",
+            "category": "specialty",
+            "id": 60
+        },
+        {
+            "franchise": "pizzaboys",
+            "item": "Bacon Chicken Mushroom Melt",
+            "category": "specialty",
+            "id": 61
+        },
+        {
+            "franchise": "pizzaboys",
+            "item": "Hawaiian",
+            "category": "specialty",
+            "id": 62
+        },
+        {
+            "franchise": "pizzaboys",
+            "item": "Supreme",
+            "category": "specialty",
+            "id": 63
+        },
+        {
+            "franchise": "pizzaboys",
+            "item": "Garden Veggie",
+            "category": "specialty",
+            "id": 64
+        },
+        {
+            "franchise": "pizzaboys",
+            "item": "Super Supreme",
+            "category": "specialty",
+            "id": 65
+        }
+    ],
+    "outlets": [
+        {
+            "name": "Pizza Hut Roxy",
+            "address": "Damian Street & Western Main Road, Woodbrook, Port of Spain",
+            "phone1": "628-1488",
+            "franchise": "pizzahut",
+            "id": 1
+        },
+        {
+            "name": "Pizza Hut Trincity",
+            "address": "Pizza Hut Trincity, 2nd Floor Trincity Mall",
+            "phone1": "640-1488",
+            "franchise": "pizzahut",
+            "id": 2
+        },
+        {
+            "name": "Pizza Hut Valsayn",
+            "address": "Pizza Hut Valsayn, Churchill Roosevelt Highway & Southern Main Road",
+            "phone1": "662-1488",
+            "franchise": "pizzahut",
+            "id": 3
+        },
+        {
+            "name": "Pizza Hut Price Plaza",
+            "address": "Pizza Hut Price Plaza, Price Plaza Chaguanas",
+            "phone1": "672-1488",
+            "franchise": "pizzahut",
+            "id": 4
+        },
+        {
+            "name": "Pizza Hut Windsor",
+            "address": "Pizza Hut Windsor, Hollis Avenue, Arima",
+            "phone1": "664-1488",
+            "franchise": "pizzahut",
+            "id": 5
+        },
+        {
+            "name": "Pizza Hut Gulf View",
+            "address": "Pizza Hut Gulf View, La Romain",
+            "phone1": "653-1488",
+            "franchise": "pizzahut",
+            "id": 6
+        },
+        {
+            "name": "Pizza Hut Lowlands",
+            "address": "Pizza Hut Lowlands, Gulf City Lowlands Mall, Tobago",
+            "phone1": "660-1488",
+            "franchise": "pizzahut",
+            "id": 7
+        },
+        {
+            "name": "Dominos - Aripita",
+            "address": "Aripita, Port of Spain",
+            "phone1": "624-0555",
+            "hours": "sunday - thursday : 11am to 11pm, friday & saturday : 11am to 10pm",
+            "franchise": "dominos",
+            "id": 8
+        },
+        {
+            "name": "Dominos - Chaguanas",
+            "address": "Chaguanas",
+            "phone1": "665-0555",
+            "hours": "monday - sunday : 11am to 10pm",
+            "franchise": "dominos",
+            "id": 9
+        },
+        {
+            "name": "Papa John - Chaguanas",
+            "address": "11 Southern main Rd Chaguanas",
+            "phone1": "665-7272",
+            "phone2": "354-6563",
+            "hours": "10am to 10pm",
+            "franchise": "papajohn",
+            "id": 10
+        },
+        {
+            "name": "Papa John - Curepe",
+            "address": "Eastern Main Rd & Riverside Rd Curepe",
+            "phone1": "662-7272",
+            "hours": "11am to 11pm",
+            "franchise": "papajohn",
+            "id": 11
+        },
+        {
+            "name": "Papa John - El Socorro",
+            "address": "Fifth Street, San Juan",
+            "phone1": "674-7272",
+            "hours": "11am to 11pm",
+            "franchise": "papajohn",
+            "id": 12
+        },
+        {
+            "name": "Papa John - St James",
+            "address": "31 Mucurapo Rd St James",
+            "phone1": "629-7272",
+            "hours": "11am to 11pm",
+            "franchise": "papajohn",
+            "id": 13
+        },
+        {
+            "name": "Papa John - Maraval",
+            "address": "#3 Saddle Road",
+            "phone1": "622-7272",
+            "hours": "11am to 11pm",
+            "franchise": "papajohn",
+            "id": 14
+        },
+        {
+            "name": "Papa John - Gulf City",
+            "address": "Gulf City Shopping Complex",
+            "phone1": "657-7272",
+            "hours": "11am to 11pm",
+            "franchise": "papajohn",
+            "id": 15
+        },
+        {
+            "name": "Mario's - O'meara Rd",
+            "address": "O'meara Road, Arima",
+            "phone1": "298-1817",
+            "franchise": "marios",
+            "id": 16
+        },
+        {
+            "name": "Mario's - Chaguanas Main Road",
+            "address": "Main Road, Chaguanas",
+            "phone1": "672-5464",
+            "franchise": "marios",
+            "id": 17
+        },
+        {
+            "name": "Mario's - Chaguanas Mid Centre Mall",
+            "address": "Mid Centre Mall, Chaguanas",
+            "phone1": "665-5464",
+            "franchise": "marios",
+            "id": 18
+        },
+        {
+            "name": "Mario's - Montrose",
+            "address": "Montrose, Chaguanas",
+            "phone1": "671-5464",
+            "franchise": "marios",
+            "id": 19
+        },
+        {
+            "name": "Mario's - UWI",
+            "address": "UWI St Augustine",
+            "phone1": "662-5464",
+            "franchise": "marios",
+            "id": 20
+        },
+        {
+            "name": "Mario's - Valpark",
+            "address": "Valpark Shopping Plaza, Valsayn",
+            "phone1": "645-5464",
+            "franchise": "marios",
+            "id": 21
+        },
+        {
+            "name": "Mario's - Trincity",
+            "address": "Trincity Mall, Trincity",
+            "phone1": "360-0301",
+            "phone2": "365-5464",
+            "franchise": "marios",
+            "id": 22
+        },
+        {
+            "name": "Mario's - West Mall",
+            "address": "Western Main Rd, Westmoorings",
+            "phone1": "360-0315",
+            "phone2": "387-0119",
+            "franchise": "marios",
+            "id": 23
+        },
+        {
+            "name": "Mario's - St Augustine",
+            "address": "Eastern Main Road, St. Augustine",
+            "phone1": "360-0299",
+            "phone2": "351-5464",
+            "franchise": "marios",
+            "id": 24
+        },
+        {
+            "name": "Mario's - Sangre Grande",
+            "address": "Eastern Main Rd, Sangre Grande",
+            "phone1": "360-0312",
+            "phone2": "387-0186",
+            "franchise": "marios",
+            "id": 25
+        },
+        {
+            "name": "Mario's - San Juan",
+            "address": "Eastern Main Road, San Juan",
+            "phone1": "360-0304",
+            "phone2": "360-5464",
+            "franchise": "marios",
+            "id": 26
+        },
+        {
+            "name": "Mario's - Marabella",
+            "address": "Gopaul Lands, Marabella Roundabout, Marabella",
+            "phone1": "360-0296",
+            "phone2": "387-0174",
+            "franchise": "marios",
+            "id": 27
+        },
+        {
+            "name": "Mario's - Independence Square",
+            "address": "Independence Square, Port of Spain",
+            "phone1": "360-0305",
+            "phone2": "365-5464",
+            "franchise": "marios",
+            "id": 28
+        },
+        {
+            "name": "Mario's - Cipriani Boulevard",
+            "address": "Cipriani Blvd & Tragarete Rd, Port of Spain",
+            "phone1": "360-0314",
+            "phone2": "355-5464",
+            "franchise": "marios",
+            "id": 29
+        },
+        {
+            "name": "Mario's - City Gate",
+            "address": "South Quay, Port of Spain",
+            "phone1": "360-0303",
+            "franchise": "marios",
+            "id": 30
+        },
+        {
+            "name": "Mario's - Couva",
+            "address": "Main Road, Couva",
+            "phone1": "290-7360",
+            "phone2": "387-0896",
+            "franchise": "marios",
+            "id": 31
+        },
+        {
+            "name": "Mario's - El Dorado",
+            "address": "Eastern Main Road, El Dorado",
+            "phone1": "387-0601",
+            "phone2": "387-0603",
+            "franchise": "marios",
+            "id": 32
+        },
+        {
+            "name": "Mario's - Ellerslie Plaza",
+            "address": "Ellerslie Plaza, Maraval",
+            "phone1": "360-0302",
+            "phone2": "387-0124",
+            "franchise": "marios",
+            "id": 33
+        },
+        {
+            "name": "Mario's - Gasparillo",
+            "address": "LP#5 Bonne Aventure Road, Gasparillo",
+            "phone1": "360-0306",
+            "phone2": "387-0172",
+            "franchise": "marios",
+            "id": 34
+        }
+    ]
 }

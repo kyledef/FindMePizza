@@ -22,16 +22,16 @@ public class PizzaModelManager {
     JSONArray outlets = null;
     JSONArray franchises = null;
 
+    private PizzaModelManager(Context context) {
+        this.context = context;
+    }
+
     public static PizzaModelManager getInstance(Context context) {
         if (instance == null) instance = new PizzaModelManager(context);
         else {
             instance.setContext(context);
         }
         return instance;
-    }
-
-    private PizzaModelManager(Context context) {
-        this.context = context;
     }
 
     public void setContext(Context context) {
@@ -46,7 +46,7 @@ public class PizzaModelManager {
             for (int i = 0; i < jList.length(); i++) {
                 JSONObject json = jList.getJSONObject(i);
                 Integer logoR = logoMap.get(json.getString("franchise"));
-                OutletModel mModel = new OutletModel(json.getString("name"), json.getString("address"), json.getString("franchise"), logoR.intValue(), json.getString("phone1"));
+                OutletModel mModel = new OutletModel(json.getInt("id"), json.getString("name"), json.getString("address"), json.getString("franchise"), logoR.intValue(), json.getString("phone1"));
                 list.add(mModel);
 
             }
@@ -65,7 +65,7 @@ public class PizzaModelManager {
                 JSONObject json = jList.getJSONObject(i);
                 if (franchise.equalsIgnoreCase(json.getString("franchise"))) {
                     Integer logoR = logoMap.get(json.getString("franchise"));
-                    OutletModel mModel = new OutletModel(json.getString("name"), json.getString("address"), json.getString("franchise"), logoR.intValue(), json.getString("phone1"));
+                    OutletModel mModel = new OutletModel(json.getInt("id"), json.getString("name"), json.getString("address"), json.getString("franchise"), logoR.intValue(), json.getString("phone1"));
                     list.add(mModel);
                 }
             }
@@ -83,7 +83,7 @@ public class PizzaModelManager {
             for (int i = 0; i < fList.length(); i++) {
                 JSONObject json = fList.getJSONObject(i);
                 Integer logoR = logoMap.get(json.getString("shortcode"));
-                FranchiseModel fm = new FranchiseModel(json.getString("name"), json.getString("shortcode"), json.getString("url"), logoR.intValue());
+                FranchiseModel fm = new FranchiseModel(json.getInt("id"), json.getString("name"), json.getString("shortcode"), json.getString("url"), logoR.intValue());
                 list.add(fm);
             }
         } catch (Exception e) {
@@ -138,7 +138,7 @@ public class PizzaModelManager {
                 } catch (Exception e) {
                 }
                 if (franchise.equalsIgnoreCase(json.getString("franchise"))) {
-                    MenuModel mModel = new MenuModel(json.getString("franchise"), json.getString("item"), json.getString("category"), type, json.getString("cost"));
+                    MenuModel mModel = new MenuModel(json.getInt("id"), json.getString("franchise"), json.getString("item"), json.getString("category"), type, json.getString("cost"));
                     list.add(mModel);
                 }
             }
@@ -175,5 +175,9 @@ public class PizzaModelManager {
             }
         }
         return outlets;
+    }
+
+    public boolean loadAllData() {
+        return (retrieveAllInfo() != null);
     }
 }

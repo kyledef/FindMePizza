@@ -1,28 +1,30 @@
 package org.kyledef.findmepizza.model;
 
-/**
- * Created by kyle on 3/1/15.
- */
 public class FranchiseModel {
+    int id;
     String name;
-    String shortcode;
+    String shortCode;
     String url;
     int logoR;
 
-    public FranchiseModel(String name, String shortcode, String url, int logoR) {
+    public FranchiseModel(int id, String name, String shortCode, String url, int logoR) {
+        this.id = id;
         this.name = name;
-        this.shortcode = shortcode;
+        this.shortCode = shortCode;
         this.url = url;
         this.logoR = logoR;
     }
 
+    public int getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
     }
 
-    public String getShortcode() {
-        return shortcode;
+    public String getShortCode() {
+        return shortCode;
     }
 
     public String getUrl() {
