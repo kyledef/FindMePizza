@@ -1,5 +1,7 @@
 package org.kyledef.findmepizza.ui;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
@@ -7,14 +9,18 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.google.android.gms.auth.GoogleAuthUtil;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.plus.People;
 
 import org.kyledef.findmepizza.R;
+import org.kyledef.findmepizza.helper.AccountUtils;
 import org.kyledef.findmepizza.helper.GAnalyticsHelper;
+import org.kyledef.findmepizza.helper.GAuthListeners;
 import org.kyledef.findmepizza.ui.fragments.NavDrawerFragment;
 
-/**
- * Created by kyle on 3/18/15.
- */
 public abstract class BaseActivity extends ActionBarActivity implements NavDrawerFragment.NavigationDrawerCallbacks {
 
     private NavDrawerFragment mNavigationDrawerFragment;
@@ -46,16 +52,19 @@ public abstract class BaseActivity extends ActionBarActivity implements NavDrawe
     @Override
     public void onNavigationDrawerItemSelected(int position) {
         switch(position){
-            case 0: // Home
+            case 0:
+                launchAccount();
+                break;
+            case 1: // Home
                 launchHome();
                 break;
-            case 1: // Recent
+            case 2: // Recent
                 launchRecent();
                 break;
-            case 2: // Favourites
+            case 3: // Favourites
                 launchFavourites();
                 break;
-            case 3: // Settings
+            case 4: // Settings
                 launchSettings();
                 break;
             default:
@@ -66,6 +75,22 @@ public abstract class BaseActivity extends ActionBarActivity implements NavDrawe
 
     public void restoreActionBar() {
 
+    }
+
+    private void launchAccount(){
+        Toast.makeText(this, "Account Manager", Toast.LENGTH_SHORT).show();
+        if (AccountUtils.hasActiveAccount(this)){
+
+        }else{
+            // Start Process for user to sign in
+            AccountManager am = AccountManager.get(this);
+            Account[] accounts = am.getAccountsByType(GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE);
+            if (accounts.length > 0){
+                String accountName = accounts[0].name; // Use the default google account // TODO Give user the ability to choose
+                AccountUtils.setActiveAccountName(this, accountName);
+                AccountUtils.signInUser(this, accountName);
+            }
+        }
     }
 
     private void launchHome(){
@@ -85,7 +110,6 @@ public abstract class BaseActivity extends ActionBarActivity implements NavDrawe
     private void launchSettings(){
         startActivity(new Intent(this, SettingsActivity.class ));
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

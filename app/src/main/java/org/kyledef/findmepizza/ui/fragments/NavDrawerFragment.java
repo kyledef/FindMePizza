@@ -1,5 +1,7 @@
 package org.kyledef.findmepizza.ui.fragments;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.content.res.TypedArray;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
@@ -21,14 +23,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.GoogleAuthUtil;
+
 import org.kyledef.findmepizza.R;
+import org.kyledef.findmepizza.helper.AccountUtils;
 import org.kyledef.findmepizza.helper.DrawerAdapter;
 import org.kyledef.findmepizza.model.NarBarItem;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 
 public class NavDrawerFragment extends Fragment {
@@ -52,6 +61,7 @@ public class NavDrawerFragment extends Fragment {
     private ArrayList<NarBarItem> mDrawerItems;
 
     public NavDrawerFragment() {
+        super();
     }
 
     @Override
@@ -96,8 +106,6 @@ public class NavDrawerFragment extends Fragment {
 
         Toolbar toolbar = (Toolbar) activity.findViewById(R.id.toolbar);
         if (toolbar != null) activity.setSupportActionBar(toolbar);
-
-
 
         mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
         mTitle = mDrawerTitle = activity.getTitle();
@@ -158,10 +166,12 @@ public class NavDrawerFragment extends Fragment {
         final ViewGroup header = (ViewGroup)inflater.inflate(R.layout.header, mDrawerListView, false);
         final ViewGroup footer = (ViewGroup)inflater.inflate(R.layout.footer, mDrawerListView, false);
 
+        // Configure the Header
+        this.setUpHeader(activity, header);
+
         mDrawerListView.addHeaderView(header, null, true); // true = clickable
         mDrawerListView.addFooterView(footer, null, true); // true = clickable
 
-//        ArrayAdapter<String> adapter = new ArrayAdapter<>(activity, android.R.layout.simple_list_item_1, mDrawerTitles);
         DrawerAdapter adapter = new DrawerAdapter(activity, mDrawerItems);
         mDrawerListView.setAdapter(adapter);
     }
@@ -176,6 +186,26 @@ public class NavDrawerFragment extends Fragment {
         }
         if (mCallbacks != null) {
             mCallbacks.onNavigationDrawerItemSelected(position);
+        }
+    }
+
+    private void setUpHeader(ActionBarActivity activity, ViewGroup header){
+        if (header.findViewById(R.id.account_name) == null){
+            return;
+        }
+
+        AccountManager am = AccountManager.get(activity);
+        Account[] accountArray = am.getAccountsByType(GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE);
+        List<Account> accounts = new ArrayList<>(Arrays.asList(accountArray));
+
+
+        Account chosenAccount = AccountUtils.getActiveAccount(activity);
+        if (chosenAccount != null){
+            ((TextView)header.findViewById(R.id.account_name)).setText(chosenAccount.name);
+            accounts.remove(chosenAccount);
+
+            ImageView imageView = (ImageView)header.findViewById(R.id.profile_image);
+            AccountUtils.loadAccountImage(activity, chosenAccount, imageView);
         }
     }
 

@@ -31,4 +31,6 @@
     <string name="pref_sms_telemetry_title">Telemetry</string>
     <string name="pref_summary_telemetry">Report anonymous usage and performance metrics in order to improve application over time.</string>
     <string name="pref_title_telemetry">Enable Reporting</string>
+    <string name="placeholder_name">No Account Setup</string>
+    <string name="placeholder_email">No Email Account Associated with App</string>
 </resources>
