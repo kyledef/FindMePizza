@@ -55,6 +55,7 @@
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/account_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/placeholder_email"

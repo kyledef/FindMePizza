@@ -7,23 +7,22 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.GoogleAuthUtil;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.plus.People;
 
 import org.kyledef.findmepizza.R;
 import org.kyledef.findmepizza.helper.AccountUtils;
 import org.kyledef.findmepizza.helper.GAnalyticsHelper;
-import org.kyledef.findmepizza.helper.GAuthListeners;
 import org.kyledef.findmepizza.ui.fragments.NavDrawerFragment;
 
-public abstract class BaseActivity extends ActionBarActivity implements NavDrawerFragment.NavigationDrawerCallbacks {
+public abstract class BaseActivity extends ActionBarActivity implements NavDrawerFragment.NavigationDrawerCallbacks, AccountUtils.SignInCallback {
 
     private NavDrawerFragment mNavigationDrawerFragment;
+    private String accountName;
 
     protected abstract String getScreenName();
 
@@ -80,16 +79,18 @@ public abstract class BaseActivity extends ActionBarActivity implements NavDrawe
     private void launchAccount(){
         Toast.makeText(this, "Account Manager", Toast.LENGTH_SHORT).show();
         if (AccountUtils.hasActiveAccount(this)){
-
+            //TODO Change Account Dialog
+            onSignInFailure("Already Signed In Using: " + AccountUtils.getActiveAccount(this));
         }else{
             // Start Process for user to sign in
             AccountManager am = AccountManager.get(this);
             Account[] accounts = am.getAccountsByType(GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE);
             if (accounts.length > 0){
-                String accountName = accounts[0].name; // Use the default google account // TODO Give user the ability to choose
-                AccountUtils.setActiveAccountName(this, accountName);
-                AccountUtils.signInUser(this, accountName);
-            }
+                accountName = accounts[0].name; // Use the default google account // TODO Give user the ability to choose
+                Log.d(AccountUtils.LOGIN_TAG, "Attempting to Log In Using Google + with: "+ accountName);
+                AccountUtils.signInUser(this, accountName, this);
+            }else
+                onSignInFailure("No Google Account Available");
         }
     }
 
@@ -109,6 +110,13 @@ public abstract class BaseActivity extends ActionBarActivity implements NavDrawe
 
     private void launchSettings(){
         startActivity(new Intent(this, SettingsActivity.class ));
+    }
+
+
+    protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
+        if (requestCode == AccountUtils.RC_SIGN_IN) {
+            AccountUtils.signInUser(this, accountName, this);
+        }
     }
 
     @Override
@@ -131,5 +139,13 @@ public abstract class BaseActivity extends ActionBarActivity implements NavDrawe
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onSignInSuccess(){
+        startActivity(new Intent(this, PizzaList.class));
+        finish();
+    }
+    public void onSignInFailure(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }
