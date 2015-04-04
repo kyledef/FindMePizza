@@ -82,6 +82,7 @@ public class PizzaModelManager {
 
     public ArrayList<OutletModel> getOuLets(String franchise, String area) {
         //TODO Implement the filter by area functionality
+        if (franchise == null)return getOuLets();
         return getOuLets(franchise);
     }
 

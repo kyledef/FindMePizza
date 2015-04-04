@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
+        android:contentDescription="@string/placeholder_text"
         android:scaleType="centerCrop"
         android:src="@drawable/header_image" />
 
@@ -15,8 +16,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
-        android:scaleType="centerCrop"
-        android:background="#85000000" />
+        android:background="#85000000"
+        android:contentDescription="@string/placeholder_text"
+        android:scaleType="centerCrop" />
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -28,11 +30,13 @@
 
 
         <ImageView
+            android:id="@+id/profile_image"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_above="@+id/headerText"
             android:layout_marginBottom="5dp"
-            android:src="@drawable/joespizza"/>
+            android:contentDescription="@string/placeholder_text"
+            android:src="@drawable/default_profile"/>
 
 
         <LinearLayout
@@ -43,16 +47,18 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/account_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Daniel van der Valk"
+                android:text="@string/placeholder_name"
                 android:textColor="#ffffff"
                 android:textSize="14sp" />
 
             <TextView
+                android:id="@+id/account_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="d4ddylild4rk@gmail.com"
+                android:text="@string/placeholder_email"
                 android:textColor="#ffffff"
                 android:textSize="14sp" />
 

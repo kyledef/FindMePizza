@@ -75,8 +75,13 @@ public class PizzaList extends BaseActivity implements OutletAdapter.OutletClick
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         switch(requestCode){
             case Constants.OUTLET_FILTER:
-                String location  = data.getStringExtra("location");
-                String franchise = data.getStringExtra("franchise");
+                //TODO Check if extra exists
+                String location = null, franchise = null;
+                if (data.hasExtra("location"))
+                    location  = data.getStringExtra("location");
+                if (data.hasExtra("location"))
+                    franchise = data.getStringExtra("franchise");
+
                 updateView(franchise, location);
                 break;
         }
