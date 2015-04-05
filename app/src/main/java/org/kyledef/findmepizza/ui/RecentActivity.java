@@ -9,12 +9,14 @@ import android.widget.FrameLayout;
 import org.kyledef.findmepizza.R;
 import org.kyledef.findmepizza.helper.OutletAdapter;
 import org.kyledef.findmepizza.helper.RecentAdapter;
+import org.kyledef.findmepizza.helper.RecentHelper;
 import org.kyledef.findmepizza.helper.RecyclerHelper;
 import org.kyledef.findmepizza.model.OutletModel;
 import org.kyledef.findmepizza.model.PizzaModelManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 
 public class RecentActivity  extends BaseActivity{
 
@@ -34,7 +36,6 @@ public class RecentActivity  extends BaseActivity{
         RecyclerHelper.configureRecycler(this, recyclerView);
         list = new ArrayList<>();
         adapter = new RecentAdapter(list);
-//        adapter.setOnItemClickListener(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setHasFixedSize(true);
 
@@ -42,16 +43,24 @@ public class RecentActivity  extends BaseActivity{
     }
 
     protected void updateView(){
-        new Thread(() -> {
-            PizzaModelManager pmm = PizzaModelManager.getInstance(getApplicationContext());
-            list = new ArrayList<>();
-            list.addAll(pmm.getOuLets());
-            Collections.sort(list, (outletModel, outletModel2) -> {
-                if (outletModel.getId() == outletModel2.getId()) return 0;
-                return outletModel.getFranchise().compareTo(outletModel2.getFranchise()) + outletModel.getName().compareTo(outletModel2.getName());
-            });
-            adapter.addModels(list);
-            runOnUiThread(adapter::notifyDataSetChanged);
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                list = RecentHelper.getRecentOutlets(getApplicationContext());
+                Collections.sort(list, new Comparator<OutletModel>() {
+                    public int compare(OutletModel outletModel, OutletModel outletModel2) {
+                        if (outletModel.getId() == outletModel2.getId()) return 0;
+                        return outletModel.getFranchise().compareTo(outletModel2.getFranchise()) + outletModel.getName().compareTo(outletModel2.getName());
+                    }
+                });
+                adapter.addModels(list);
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+            }
         }).start();
     }
 

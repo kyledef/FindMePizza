@@ -34,5 +34,7 @@
     <string name="placeholder_name">No Account Setup</string>
     <string name="placeholder_email">Press Here to start Sign in Process</string>
     <string name="favourites">Favourites</string>
-    <string name="favourites_description">The list refers to franchises that were marked as favourites.</string>
+    <string name="favourites_description">Outlets and Menu Items that were marked as favourites.</string>
+    <string name="recent">Recent</string>
+    <string name="recent_description" >Outlets were recently selected.</string>
 </resources>

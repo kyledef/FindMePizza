@@ -19,7 +19,25 @@ public class FavouriteHelper {
         for (OutletModel o : outlets){
             data += o.getId() + ",";
         }
-        sp.edit().putString(FAV_DB_REF, data);
+        sp.edit().putString(FAV_DB_REF, data).commit();
+    }
+
+    public static boolean saveFavouriteOutlet(Context context, OutletModel outlet){
+        ArrayList<OutletModel>list = getFavouriteOutlets(context);
+        if (!list.contains(outlet)){
+            list.add(outlet);
+            saveFavouriteOutlets(context, list);
+            return true;
+        }
+        return false;
+    }
+
+    public static boolean removeFavouriteOutlet(Context context, OutletModel outlet){
+        ArrayList<OutletModel>list = getFavouriteOutlets(context);
+        if (list.contains(outlet)){
+            return list.remove(outlet);
+        }
+        return false;
     }
 
     public static ArrayList<OutletModel> getFavouriteOutlets(Context context){

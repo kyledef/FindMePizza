@@ -100,4 +100,11 @@ public class OutletModel implements Parcelable {
         b.putStringArray("contacts", contacts);
         dest.writeBundle(b);
     }
+
+    @Override
+    public boolean equals(Object object){
+        if (object instanceof OutletModel)
+            return this.id == ((OutletModel)object).id;
+        return false;
+    }
 }

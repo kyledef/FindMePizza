@@ -19,7 +19,15 @@ public class RecentHelper {
         for (OutletModel o : outlets){
             data += o.getId() + ",";
         }
-        sp.edit().putString(OUTLET_DB_REF, data);
+        sp.edit().putString(OUTLET_DB_REF, data).commit();
+    }
+
+    public static void saveRecentOutlet(Context context, OutletModel outlet){
+        ArrayList<OutletModel>list = getRecentOutlets(context);
+        if (!list.contains(list)){
+            list.add(outlet);
+            saveRecentOutlets(context, list);
+        }
     }
 
     public static ArrayList<OutletModel> getRecentOutlets(Context context){

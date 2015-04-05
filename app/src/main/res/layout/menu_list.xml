@@ -7,7 +7,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="165dp"
         android:background="@color/color_light_blue_100"
         android:orientation="vertical">
 
@@ -32,19 +32,40 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:orientation="horizontal">
+
             <ImageButton
                 android:id="@+id/call_action"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/phone_icon"
-                android:contentDescription="Call Franchise"/>
+                android:contentDescription="Call Franchise"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp" />
 
             <ImageButton
                 android:id="@+id/website_action"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="@drawable/browser_icon"
-                android:contentDescription="View Franchise Web Page"/>
+                android:contentDescription="View Franchise Web Page"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp" />
+
+            <ImageButton
+                android:id="@+id/fav_action"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/favorite_icon"
+                android:contentDescription="Favourites"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="1dp" />
+
             </LinearLayout>
     </LinearLayout>
 
