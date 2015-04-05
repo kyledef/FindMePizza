@@ -89,27 +89,16 @@ public class PizzaList extends BaseActivity implements OutletAdapter.OutletClick
     }
 
     protected void updateView(final String franchise, final String area){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                PizzaModelManager pmm = PizzaModelManager.getInstance(getApplicationContext());
-                list = new ArrayList<>();
-                list.addAll(pmm.getOuLets(franchise, area));
-                Collections.sort(list, new Comparator<OutletModel>() {
-                    @Override
-                    public int compare(OutletModel outletModel, OutletModel outletModel2) {
-                        if (outletModel.getId() == outletModel2.getId())return 0;
-                        return outletModel.getFranchise().compareTo(outletModel2.getFranchise()) + outletModel.getName().compareTo(outletModel2.getName());
-                    }
-                });
-                adapter.addModels(list);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        adapter.notifyDataSetChanged();
-                    }
-                });
-            }
+        new Thread(() -> {
+            PizzaModelManager pmm = PizzaModelManager.getInstance(getApplicationContext());
+            list = new ArrayList<>();
+            list.addAll(pmm.getOuLets(franchise, area));
+            Collections.sort(list, (outletModel, outletModel2) -> {
+                if (outletModel.getId() == outletModel2.getId())return 0;
+                return outletModel.getFranchise().compareTo(outletModel2.getFranchise()) + outletModel.getName().compareTo(outletModel2.getName());
+            });
+            adapter.addModels(list);
+            runOnUiThread(adapter::notifyDataSetChanged);
         }).start();
     }
 
