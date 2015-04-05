@@ -14,9 +14,6 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by kyle on 2/23/15.
- */
 public class PizzaModelManager {
     private static PizzaModelManager instance;
     Context context;
@@ -56,6 +53,14 @@ public class PizzaModelManager {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public OutletModel getOutletById(String id){
+        ArrayList<OutletModel> list = getOuLets();
+        for (OutletModel outlet : list){
+            if (outlet.getId() == Integer.parseInt(id))return outlet;
+        }
+        return null;
     }
 
     public ArrayList<OutletModel> getOuLets(String franchise) {
@@ -103,6 +108,7 @@ public class PizzaModelManager {
         return list;
     }
 
+    @SuppressWarnings("ResultOfMethodCallIgnored")
     private JSONObject retrieveAllInfo() {
         if (fullData == null) {
             try {
@@ -114,9 +120,7 @@ public class PizzaModelManager {
                 String jsonString = new String(buffer, "UTF-8");
                 fullData = new JSONObject(jsonString);
 
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JSONException e) {
+            } catch (IOException | JSONException e) {
                 e.printStackTrace();
             }
         }
@@ -146,8 +150,7 @@ public class PizzaModelManager {
                 String type = "other";
                 try {
                     type = json.getString("type");
-                } catch (Exception e) {
-                }
+                } catch (Exception e) { e.printStackTrace(); }
                 if (franchise.equalsIgnoreCase(json.getString("franchise"))) {
                     MenuModel mModel = new MenuModel(json.getInt("id"), json.getString("franchise"), json.getString("item"), json.getString("category"), type, json.getString("cost"));
                     list.add(mModel);
@@ -168,7 +171,7 @@ public class PizzaModelManager {
                 String code = json.getString("shortcode");
                 String logo = json.getString("logo").split("[@.]")[0];
                 int resource = context.getResources().getIdentifier(logo, "drawable", context.getPackageName());
-                map.put(code, Integer.valueOf(resource));
+                map.put(code, resource);
             }
         } catch (JSONException e) {
             e.printStackTrace();
