@@ -512,6 +512,12 @@
             "item": "Super Supreme",
             "category": "specialty",
             "id": 65
+        },
+        {
+            "franchise": "lacantina",
+            "item": "Super Supreme",
+            "category": "specialty",
+            "id": 65
         }
     ],
     "outlets": [
@@ -773,6 +779,164 @@
             "phone2": "387-0172",
             "franchise": "marios",
             "id": 34
+        },
+        {
+            "name": "La Cantina - Port of Spain",
+            "address": "12 Victoria Avenue, POS, Trinidad",
+            "phone1": "627 4992",
+            "franchise": "lacantina",
+            "id": 35
+        },
+        {
+            "name": "La Cantina - Store Bay",
+            "address": "RBTT Compound, Milford Road, Store Bay, Tobago",
+            "phone1": "639-8242",
+            "franchise": "lacantina",
+            "id": 36
+        },
+        {
+            "name": "Pizza Boys - Arima",
+            "address": "Pro Queen Street, Arima",
+            "phone1": "225-5144",
+            "franchise": "pizzaboys",
+            "id": 37
+        },
+        {
+            "name": "Pizza Boys - Arouca",
+            "address": "Eastern Main Road, Arouca ",
+            "phone1": "225-5162",
+            "franchise": "pizzaboys",
+            "id": 38
+        },
+        {
+            "name": "Pizza Boys - Chaguanas",
+            "address": "Main Road, Chaguanas",
+            "phone1": "225-5149",
+            "franchise": "pizzaboys",
+            "id": 39
+        },
+        {
+            "name": "Pizza Boys - Crowne Pointe",
+            "address": "Milford Road, Crowne Pointe, Tobago",
+            "phone1": "712-6040",
+            "franchise": "pizzaboys",
+            "id": 40
+        },
+        {
+            "name": "Pizza Boys - Cunupia",
+            "address": "Chin Chin Road, Cunupia",
+            "phone1": "225-5160",
+            "franchise": "pizzaboys",
+            "id": 41
+        },
+        {
+            "name": "Pizza Boys - Debe",
+            "address": "Debe Central Road,Debe",
+            "phone1": "225-5171",
+            "franchise": "pizzaboys",
+            "id": 42
+        },
+        {
+            "name": "Pizza Boys - Glencoe",
+            "address": "Highland Plaza, Glencoe",
+            "phone1": "225-5102",
+            "phone2": "225-5103",
+            "franchise": "pizzaboys",
+            "id": 43
+        },
+        {
+            "name": "Pizza Boys - Valsayn",
+            "address": "Grand Bazaar, Valsayn",
+            "phone1": "225-5154",
+            "franchise": "pizzaboys",
+            "id": 44
+        },
+        {
+            "name": "Pizza Boys, Gulf City Mall",
+            "address": "Gulf View Shopping Plaza, La Romain",
+            "phone1": "225-5135",
+            "franchise": "pizzaboys",
+            "id": 45
+        },
+        {
+            "name": "Pizza Boys - Maraval",
+            "address": "#143 Long Circular Road, Maraval",
+            "phone1": "225-5106",
+            "phone2": "225-5108",
+            "franchise": "pizzaboys",
+            "id": 46
+        },
+        {
+            "name": "Pizza Boys - Piarco",
+            "address": "International Airport, Piarco",
+            "phone1": "225-5165",
+            "phone2": "225-6167",
+            "franchise": "pizzaboys",
+            "id": 47
+        },
+        {
+            "name": "Pizza Boys - Pleasant Prospect",
+            "address": "Main Road, Pleasant Prospect, Tobago",
+            "phone1": "712-7490",
+            "franchise": "pizzaboys",
+            "id": 48
+        },
+        {
+            "name": "Pizza Boys - Point Fortin",
+            "address": "#38-40 Main Road, Point Fortin",
+            "phone1": "225-5142",
+            "franchise": "pizzaboys",
+            "id": 49
+        },
+        {
+            "name": "Pizza Boys - Point Lisas",
+            "address": "Atlantic Plaza, Point Lisas",
+            "phone1": "225-5129",
+            "franchise": "pizzaboys",
+            "id": 50
+        },
+        {
+            "name": "Pizza Boys - Pointe-a-Pierre",
+            "address": "Tropical Plaza, Pointe-a-Pierre",
+            "phone1": "225-5145",
+            "phone2": "225-5146",
+            "franchise": "pizzaboys",
+            "id": 51
+        },
+        {
+            "name": "Pizza Boys - Princes Town",
+            "address": "High Street, Princes Town",
+            "phone1": "225-5156",
+            "franchise": "pizzaboys",
+            "id": 52
+        },
+        {
+            "name": "Pizza Boys - San Fernando",
+            "address": "#5A Pointe-a-Pierre Road, San Fernando",
+            "phone1": "225-5157",
+            "franchise": "pizzaboys",
+            "id": 53
+        },
+        {
+            "name": "Pizza Boys - Siparia",
+            "address": "High Street, Siparia",
+            "phone1": "225-5159",
+            "franchise": "pizzaboys",
+            "id": 54
+        },
+        {
+            "name": "Pizza Boys - Store Bay",
+            "address": "Corner Store Bay Local Road, Crown Point, Tobago",
+            "phone1": "712-6251",
+            "franchise": "pizzaboys",
+            "id": 55
+        },
+        {
+            "name": "Pizza Boys - Trincity",
+            "address": "Trincity Mall, Trincity",
+            "phone1": "225-5123",
+            "franchise": "pizzaboys",
+            "id": 56
         }
     ]
 }
