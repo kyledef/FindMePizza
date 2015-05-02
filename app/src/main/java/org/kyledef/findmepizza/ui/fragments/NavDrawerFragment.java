@@ -29,6 +29,7 @@ import org.kyledef.findmepizza.R;
 import org.kyledef.findmepizza.helper.AccountUtils;
 import org.kyledef.findmepizza.helper.DrawerAdapter;
 import org.kyledef.findmepizza.model.NarBarItem;
+import org.kyledef.findmepizza.ui.BaseActivity;
 
 import java.util.ArrayList;
 
@@ -93,7 +94,7 @@ public class NavDrawerFragment extends Fragment {
     }
 
 
-    public void setUp(final ActionBarActivity activity, int fragmentId, DrawerLayout drawerLayout) {
+    public void setUp(final BaseActivity activity, int fragmentId, DrawerLayout drawerLayout) {
         mFragmentContainerView = activity.findViewById(fragmentId);
         mDrawerLayout = drawerLayout;
 
@@ -146,7 +147,7 @@ public class NavDrawerFragment extends Fragment {
         buildNavMenuOptions(activity);
     }
 
-    private void buildNavMenuOptions(final ActionBarActivity activity){
+    private void buildNavMenuOptions(final BaseActivity activity){
         mDrawerTitles = getResources().getStringArray(R.array.menu_items);
         mDrawerIcons = getResources().obtainTypedArray(R.array.drawer_icons);
         mDrawerItems = new ArrayList<>();
@@ -182,7 +183,7 @@ public class NavDrawerFragment extends Fragment {
         }
     }
 
-    public void setUpHeader(ActionBarActivity activity, ViewGroup header){
+    public void setUpHeader(BaseActivity activity, ViewGroup header){
         if (header.findViewById(R.id.account_name) == null){
             return;
         }
@@ -264,7 +265,7 @@ public class NavDrawerFragment extends Fragment {
     }
 
     private ActionBar getActionBar() {
-        return ((ActionBarActivity) getActivity()).getSupportActionBar();
+        return ((BaseActivity) getActivity()).getSupportActionBar();
     }
 
     /**
