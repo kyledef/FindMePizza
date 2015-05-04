@@ -148,11 +148,13 @@ public class PizzaModelManager {
             for (int i = 0; i < jList.length(); i++) {
                 JSONObject json = jList.getJSONObject(i);
                 String type = "other";
-                try {
+                if (json.has("type"))
                     type = json.getString("type");
-                } catch (Exception e) { e.printStackTrace(); }
+
                 if (franchise.equalsIgnoreCase(json.getString("franchise"))) {
-                    MenuModel mModel = new MenuModel(json.getInt("id"), json.getString("franchise"), json.getString("item"), json.getString("category"), type, json.getString("cost"));
+                    String cost = "Cost Not Listed";
+                    if (json.has("cost"))cost = json.getString("cost");
+                    MenuModel mModel = new MenuModel(json.getInt("id"), json.getString("franchise"), json.getString("item"), json.getString("category"), type, cost);
                     list.add(mModel);
                 }
             }
