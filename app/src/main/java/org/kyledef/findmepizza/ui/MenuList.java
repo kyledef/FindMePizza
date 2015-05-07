@@ -146,7 +146,7 @@ public class MenuList extends BaseActivity implements MenuAdapter.MenuClickListe
             switch (id){
                 case R.id.call_action:
                     saveRecent(outletModel);
-                    Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:" +  outletModel.getContact()));
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" +  outletModel.getContact()));
                     startActivity(intent);
                     break;
                 case R.id.website_action:
