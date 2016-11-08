@@ -60,7 +60,7 @@ public class AccountUtils {
 
     public static void setActiveAccountName(final Context context, final String accountName){
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        sp.edit().putString(PREF_ACTIVE_ACCOUNT, accountName).commit();
+        sp.edit().putString(PREF_ACTIVE_ACCOUNT, accountName).apply();
     }
 
     public static Account getActiveAccount(final Context context) {

@@ -153,7 +153,7 @@ public class NavDrawerFragment extends Fragment {
         mDrawerItems = new ArrayList<>();
 
         for (int i = 0; i < mDrawerTitles.length; i++){
-            mDrawerItems.add(new NarBarItem(mDrawerTitles[i].toString(),mDrawerIcons.getResourceId(i, 0)));
+            mDrawerItems.add(new NarBarItem(mDrawerTitles[i],mDrawerIcons.getResourceId(i, 0)));
         }
 
         LayoutInflater inflater = activity.getLayoutInflater();
@@ -242,16 +242,7 @@ public class NavDrawerFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-
-//        if (item.getItemId() == R.id.action_example) {
-//            Toast.makeText(getActivity(), "Example action.", Toast.LENGTH_SHORT).show();
-//            return true;
-//        }
-
-        return super.onOptionsItemSelected(item);
+        return mDrawerToggle.onOptionsItemSelected(item) || super.onOptionsItemSelected(item);
     }
 
     /**
@@ -272,9 +263,6 @@ public class NavDrawerFragment extends Fragment {
      * Callbacks interface that all activities using this fragment must implement.
      */
     public static interface NavigationDrawerCallbacks {
-        /**
-         * Called when an item in the navigation drawer is selected.
-         */
         void onNavigationDrawerItemSelected(int position);
     }
 }
