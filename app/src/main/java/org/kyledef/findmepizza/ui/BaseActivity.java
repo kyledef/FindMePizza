@@ -1,11 +1,8 @@
 package org.kyledef.findmepizza.ui;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -13,14 +10,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.GoogleAuthUtil;
-
 import org.kyledef.findmepizza.R;
 import org.kyledef.findmepizza.helper.AccountUtils;
-import org.kyledef.findmepizza.helper.GAnalyticsHelper;
+import org.kyledef.findmepizza.helper.SignInCallback;
 import org.kyledef.findmepizza.ui.fragments.NavDrawerFragment;
 
-public abstract class BaseActivity extends AppCompatActivity implements NavDrawerFragment.NavigationDrawerCallbacks, AccountUtils.SignInCallback {
+public abstract class BaseActivity extends AppCompatActivity implements NavDrawerFragment.NavigationDrawerCallbacks, SignInCallback {
 
     private NavDrawerFragment mNavigationDrawerFragment;
     private String accountName;
@@ -48,7 +43,6 @@ public abstract class BaseActivity extends AppCompatActivity implements NavDrawe
     @Override
     protected void onResume(){
         super.onResume();
-        GAnalyticsHelper.getInstance(this.getApplicationContext()).sendScreenView(getScreenName());
     }
 
     @Override
@@ -80,21 +74,9 @@ public abstract class BaseActivity extends AppCompatActivity implements NavDrawe
     }
 
     private void launchAccount(){
-        Toast.makeText(this, "Account Manager", Toast.LENGTH_SHORT).show();
-        if (AccountUtils.hasActiveAccount(this)){
-            //TODO Change Account Dialog
-            onSignInFailure("Already Signed In Using: " + AccountUtils.getActiveAccount(this));
-        }else{
-            // Start Process for user to sign in
-            AccountManager am = AccountManager.get(this);
-            Account[] accounts = am.getAccountsByType(GoogleAuthUtil.GOOGLE_ACCOUNT_TYPE);
-            if (accounts.length > 0){
-                accountName = accounts[0].name; // Use the default google account // TODO Give user the ability to choose
-                Log.d(AccountUtils.LOGIN_TAG, "Attempting to Log In Using Google + with: "+ accountName);
-                AccountUtils.signInUser(this, accountName, this);
-            }else
-                onSignInFailure("No Google Account Available");
-        }
+        Log.d("BaseActivity", "Launching Sign In Process");
+        AccountUtils accountUtils = AccountUtils.getInstance();
+        accountUtils.signInUser(this);
     }
 
     private void launchHome(){
@@ -115,10 +97,12 @@ public abstract class BaseActivity extends AppCompatActivity implements NavDrawe
         startActivity(new Intent(this, SettingsActivity.class ));
     }
 
-
-    protected void onActivityResult(int requestCode, int responseCode, Intent intent) {
-        if (requestCode == AccountUtils.RC_SIGN_IN) {
-            AccountUtils.signInUser(this, accountName, this);
+    // Used for Sign In Request
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == AccountUtils.RC_SIGN_IN){
+            AccountUtils.getInstance().handleSignInResponse(this, resultCode);
         }
     }
 
@@ -145,10 +129,21 @@ public abstract class BaseActivity extends AppCompatActivity implements NavDrawe
     }
 
     public void onSignInSuccess(){
+        Toast.makeText(this, R.string.signInSuccess, Toast.LENGTH_SHORT).show();
         startActivity(new Intent(this, PizzaList.class));
         finish();
     }
     public void onSignInFailure(String message){
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    public void onSignOutSuccess() {
+        Toast.makeText(this, R.string.signOutSuccess, Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(this, PizzaList.class));
+        finish();
+    }
+
+    public void onSignOutFailure(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

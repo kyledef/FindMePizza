@@ -37,4 +37,6 @@
     <string name="favourites_description">Outlets and Menu Items that were marked as favourites.</string>
     <string name="recent">Recent</string>
     <string name="recent_description" >Outlets were recently selected.</string>
+    <string name="signInSuccess">Successfully Signed In</string>
+    <string name="signOutSuccess">Successfully Signed Out</string>
 </resources>

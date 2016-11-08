@@ -67,4 +67,5 @@ public class FavouritesActivity  extends BaseActivity{
     protected String getScreenName(){
         return "Favourites";
     }
+
 }

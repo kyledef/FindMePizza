@@ -1,6 +1,7 @@
 package org.kyledef.findmepizza.ui.fragments;
 
 import android.accounts.Account;
+import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v7.app.ActionBarActivity;
 import android.app.Activity;
@@ -187,25 +188,15 @@ public class NavDrawerFragment extends Fragment {
         if (header.findViewById(R.id.account_name) == null){
             return;
         }
-        Account chosenAccount = AccountUtils.getActiveAccount(activity);
-        if (chosenAccount != null){
-            String plusName = AccountUtils.getPlusName(activity);
-            if (plusName != null)
-                ((TextView)header.findViewById(R.id.account_name)).setText(plusName);
-            else
-                header.findViewById(R.id.account_name).setVisibility(View.GONE);
-            ((TextView)header.findViewById(R.id.account_email)).setText(chosenAccount.name);
-            ImageView imageView = (ImageView)header.findViewById(R.id.profile_image);
-            AccountUtils.loadAccountImage(activity, chosenAccount, imageView);
-        }
+        //TODO Reimplement Behaviour
     }
 
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
-        try {
-            mCallbacks = (NavigationDrawerCallbacks) activity;
-        } catch (ClassCastException e) {
+    public void onAttach(Context ctx) {
+        super.onAttach(ctx);
+        if (ctx instanceof NavigationDrawerCallbacks){
+            mCallbacks = (NavigationDrawerCallbacks) ctx;
+        }else{
             throw new ClassCastException("Activity must implement NavigationDrawerCallbacks.");
         }
     }
