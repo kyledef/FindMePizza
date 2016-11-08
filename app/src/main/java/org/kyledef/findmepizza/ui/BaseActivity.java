@@ -12,13 +12,14 @@ import android.widget.Toast;
 
 import org.kyledef.findmepizza.R;
 import org.kyledef.findmepizza.helper.AccountUtils;
+import org.kyledef.findmepizza.helper.AnalyticsHelper;
 import org.kyledef.findmepizza.helper.SignInCallback;
 import org.kyledef.findmepizza.ui.fragments.NavDrawerFragment;
 
 public abstract class BaseActivity extends AppCompatActivity implements NavDrawerFragment.NavigationDrawerCallbacks, SignInCallback {
 
     private NavDrawerFragment mNavigationDrawerFragment;
-    private String accountName;
+    protected AnalyticsHelper analyticsHelper;
 
     protected abstract String getScreenName();
 
@@ -29,6 +30,9 @@ public abstract class BaseActivity extends AppCompatActivity implements NavDrawe
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         if (toolbar != null) setSupportActionBar(toolbar);
+
+        analyticsHelper = new AnalyticsHelper(this);
+        analyticsHelper.setScreen(getScreenName());
 
         mNavigationDrawerFragment = (NavDrawerFragment)getSupportFragmentManager().findFragmentById(R.id.navigation_drawer);
         mNavigationDrawerFragment.setUp(this, R.id.navigation_drawer,(DrawerLayout) findViewById(R.id.drawer_layout));
@@ -70,7 +74,7 @@ public abstract class BaseActivity extends AppCompatActivity implements NavDrawe
 
 
     public void restoreActionBar() {
-
+        //TODO
     }
 
     private void launchAccount(){
@@ -130,20 +134,24 @@ public abstract class BaseActivity extends AppCompatActivity implements NavDrawe
 
     public void onSignInSuccess(){
         Toast.makeText(this, R.string.signInSuccess, Toast.LENGTH_SHORT).show();
+        analyticsHelper.signIn(true);
         startActivity(new Intent(this, PizzaList.class));
         finish();
     }
     public void onSignInFailure(String message){
+        analyticsHelper.signIn(false);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
     public void onSignOutSuccess() {
         Toast.makeText(this, R.string.signOutSuccess, Toast.LENGTH_SHORT).show();
+        analyticsHelper.signOut(true);
         startActivity(new Intent(this, PizzaList.class));
         finish();
     }
 
     public void onSignOutFailure(String message) {
+        analyticsHelper.signOut(false);
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

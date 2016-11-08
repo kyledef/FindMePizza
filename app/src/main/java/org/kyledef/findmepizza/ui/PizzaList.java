@@ -52,9 +52,11 @@ public class PizzaList extends BaseActivity implements OutletAdapter.OutletClick
     @Override
     public void onItemClick(OutletModel outlet) {
         Log.d(TAG, "Selected: " + outlet);
+        // Report Select Pizza Francise Selected
+        analyticsHelper.performViewAction("View", outlet.getFranchise(), "select");
+
         Intent i = new Intent(this, MenuList.class);
         Bundle b = new Bundle();
-
         i.putExtra("outlet", outlet);
         b.putString("franchise", outlet.getFranchise());
         i.putExtra("details", b);
@@ -94,6 +96,7 @@ public class PizzaList extends BaseActivity implements OutletAdapter.OutletClick
                 PizzaModelManager pmm = PizzaModelManager.getInstance(getApplicationContext());
                 list = new ArrayList<>();
                 list.addAll(pmm.getOuLets(franchise, area));
+                Log.d(TAG, String.format("Retrieved: %d files from dataabse", list.size()));
                 Collections.sort(list, new Comparator<OutletModel>() {
                     public int compare(OutletModel outletModel, OutletModel outletModel2) {
                         if (outletModel.getId() == outletModel2.getId())return 0;

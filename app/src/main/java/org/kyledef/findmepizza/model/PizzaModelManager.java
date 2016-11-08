@@ -16,10 +16,10 @@ import java.util.Map;
 
 public class PizzaModelManager {
     private static PizzaModelManager instance;
-    Context context;
-    JSONObject fullData = null;
-    JSONArray outlets = null;
-    JSONArray franchises = null;
+    private Context context;
+    private JSONObject fullData = null;
+    private JSONArray outlets = null;
+    private JSONArray franchises = null;
 
     private PizzaModelManager(Context context) {
         this.context = context;
