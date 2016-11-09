@@ -20,6 +20,7 @@ import java.util.Map;
 
 public class PizzaModelManager {
     private static PizzaModelManager instance;
+    private final DatabaseReference database;
     private Context context;
     private JSONObject fullData = null;
     private JSONArray outlets = null;
@@ -27,13 +28,13 @@ public class PizzaModelManager {
 
     private PizzaModelManager(Context context) {
         this.context = context;
+        FirebaseDatabase.getInstance().setPersistenceEnabled(true); // Support Offline
+        database = FirebaseDatabase.getInstance().getReference();
     }
 
     public static PizzaModelManager getInstance(Context context) {
         if (instance == null) instance = new PizzaModelManager(context);
-        else {
-            instance.setContext(context);
-        }
+        else instance.setContext(context);
         return instance;
     }
 
@@ -51,7 +52,6 @@ public class PizzaModelManager {
                 Integer logoR = logoMap.get(json.getString("franchise"));
                 OutletModel mModel = new OutletModel(json.getInt("id"), json.getString("name"), json.getString("address"), json.getString("franchise"), logoR.intValue(), json.getString("phone1"));
                 list.add(mModel);
-
             }
         } catch (Exception e) {
             e.printStackTrace();

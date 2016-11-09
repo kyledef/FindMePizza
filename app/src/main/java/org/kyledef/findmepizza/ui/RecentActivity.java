@@ -7,12 +7,10 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import org.kyledef.findmepizza.R;
-import org.kyledef.findmepizza.helper.OutletAdapter;
 import org.kyledef.findmepizza.helper.RecentAdapter;
 import org.kyledef.findmepizza.helper.RecentHelper;
 import org.kyledef.findmepizza.helper.RecyclerHelper;
 import org.kyledef.findmepizza.model.OutletModel;
-import org.kyledef.findmepizza.model.PizzaModelManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,7 +31,7 @@ public class RecentActivity  extends BaseActivity{
         content.addView(layout);
 
         recyclerView = (RecyclerView) findViewById(R.id.recent_list);
-        RecyclerHelper.configureRecycler(this, recyclerView);
+        RecyclerHelper.configureListRecycler(this, recyclerView);
         list = new ArrayList<>();
         adapter = new RecentAdapter(list);
         recyclerView.setAdapter(adapter);

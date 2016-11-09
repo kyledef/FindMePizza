@@ -29,6 +29,10 @@ public class OutletModel implements Parcelable {
     String franchise;
     int logoR;
 
+    public OutletModel(){
+        this.contacts = new ArrayList<>();
+    }
+
     public OutletModel(int id, String name, String address, String franchise, int logo, String... contacts) {
         this.id = id;
         this.name = name;
@@ -74,9 +78,13 @@ public class OutletModel implements Parcelable {
         return  contacts;
     }
 
+    public void setContacts(ArrayList<String> contacts) {this.contacts = contacts; }
+
     public String getContact() {
         return contacts.get(0);
     }
+
+    public void setContact(String contact) { contacts.add(0, contact);}
 
     public String getContact(int i) {
         if (i < contacts.size()) return contacts.get(i);

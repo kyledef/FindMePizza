@@ -37,7 +37,7 @@ public class SplashScreen extends Activity {
                     sleep(2 * 1000); // Just to show the splash screen for 2 seconds
                     PizzaModelManager.getInstance(getApplicationContext()).loadAllData(); // Load data into singleton
                     setFirstUse(context);
-                    Intent intent = new Intent(context, PizzaList.class);
+                    Intent intent = new Intent(context, FranchiseList.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // Prevent Use from going back to home screen
                     startActivity(intent); // Start the Main
                 }catch(Exception e){e.printStackTrace(); }

@@ -8,7 +8,12 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.Toast;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.kyledef.findmepizza.R;
 import org.kyledef.findmepizza.helper.Constants;
@@ -18,8 +23,6 @@ import org.kyledef.findmepizza.model.OutletModel;
 import org.kyledef.findmepizza.model.PizzaModelManager;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 
 public class PizzaList extends BaseActivity implements OutletAdapter.OutletClickListener {
@@ -38,15 +41,16 @@ public class PizzaList extends BaseActivity implements OutletAdapter.OutletClick
         content.addView(pizzaLayout);
 
         recyclerView = (RecyclerView) findViewById(R.id.pizza_list);
-        RecyclerHelper.configureRecycler(this, recyclerView);
+        RecyclerHelper.configureListRecycler(this, recyclerView);
 
         list = new ArrayList<>();
         adapter = new OutletAdapter(list);
         adapter.setOnItemClickListener(this);
         recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
 
-        updateView(Constants.ALL, Constants.ALL);
+        String franchise = getIntent().getExtras().getString("franchise");
+        updateView(franchise, Constants.ALL);
+
     }
 
     @Override
@@ -65,10 +69,10 @@ public class PizzaList extends BaseActivity implements OutletAdapter.OutletClick
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_filter) {
-            startActivityForResult(new Intent(this, OutletFilterActivity.class), Constants.OUTLET_FILTER);
-            return true;
-        }
+//        if (item.getItemId() == R.id.action_filter) {
+//            startActivityForResult(new Intent(this, OutletFilterActivity.class), Constants.OUTLET_FILTER);
+//            return true;
+//        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -90,28 +94,21 @@ public class PizzaList extends BaseActivity implements OutletAdapter.OutletClick
     }
 
     protected void updateView(final String franchise, final String area){
-        new Thread(new Runnable() {
+
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+        database.child("outlets").child(franchise).addValueEventListener(new ValueEventListener() {
             @Override
-            public void run() {
-                PizzaModelManager pmm = PizzaModelManager.getInstance(getApplicationContext());
-                list = new ArrayList<>();
-                list.addAll(pmm.getOuLets(franchise, area));
-                Log.d(TAG, String.format("Retrieved: %d files from dataabse", list.size()));
-                Collections.sort(list, new Comparator<OutletModel>() {
-                    public int compare(OutletModel outletModel, OutletModel outletModel2) {
-                        if (outletModel.getId() == outletModel2.getId())return 0;
-                        return outletModel.getFranchise().compareTo(outletModel2.getFranchise()) + outletModel.getName().compareTo(outletModel2.getName());
-                    }
-                });
-                adapter.addModels(list);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        adapter.notifyDataSetChanged();
-                    }
-                });
+            public void onDataChange(DataSnapshot franchise) {
+                for (DataSnapshot outlet: franchise.getChildren()){
+                    list.add(outlet.getValue(OutletModel.class));
+                }
+                Log.d("PizzaList", String.format("Found %s outlets", list.size()));
+                adapter.notifyDataSetChanged();
             }
-        }).start();
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) { }
+        });
     }
 
 

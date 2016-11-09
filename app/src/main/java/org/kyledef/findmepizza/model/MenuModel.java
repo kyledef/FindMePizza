@@ -10,6 +10,10 @@ public class MenuModel {
     String cost;
 
 
+    public MenuModel(){
+
+    }
+
     public MenuModel(int id, String franchise, String name, String category, String type, String cost) {
         this.id = id;
         this.franchise = franchise;

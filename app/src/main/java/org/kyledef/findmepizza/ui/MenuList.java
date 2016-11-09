@@ -12,7 +12,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import org.kyledef.findmepizza.R;
+import org.kyledef.findmepizza.helper.Constants;
 import org.kyledef.findmepizza.helper.FavouriteHelper;
 import org.kyledef.findmepizza.helper.MenuAdapter;
 import org.kyledef.findmepizza.helper.RecentHelper;
@@ -52,35 +59,14 @@ public class MenuList extends BaseActivity implements MenuAdapter.MenuClickListe
         assignFranchise(outletModel, menuLayout);
 
         recyclerView = (RecyclerView) findViewById(R.id.menu_list);
-        RecyclerHelper.configureRecycler(this, recyclerView);
+        RecyclerHelper.configureListRecycler(this, recyclerView);
 
         list = new ArrayList<>();
         adapter = new MenuAdapter(list);
         adapter.setOnItemClickListener(this);
         recyclerView.setAdapter(adapter);
-        recyclerView.setHasFixedSize(true);
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                PizzaModelManager pmm = PizzaModelManager.getInstance(getApplicationContext());
-                list.addAll(pmm.getMenus(franchise));
-                Collections.sort(list, new Comparator<MenuModel>() {
-                    @Override
-                    public int compare(MenuModel menuModel, MenuModel menuModel2) {
-                        if (menuModel.getId() == menuModel2.getId())return 0;
-                        return menuModel.getName().compareTo(menuModel2.getName());
-                    }
-                });
-                adapter.addModels(list);
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        adapter.notifyDataSetChanged();
-                    }
-                });
-            }
-        }).start();
+        updateView(franchise, Constants.ALL);
     }
 
     private void assignFranchise(OutletModel model, View view){
@@ -93,8 +79,23 @@ public class MenuList extends BaseActivity implements MenuAdapter.MenuClickListe
     }
 
     @Override
-    public void onItemClick(MenuModel menu) {
+    public void onItemClick(MenuModel menu) { }
 
+    protected void updateView(final String franchise, final String area){
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+        database.child("menus").child(franchise).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot franchise) {
+                for (DataSnapshot menu: franchise.getChildren()){
+                    list.add(menu.getValue(MenuModel.class));
+                }
+                Log.d("MenuList", String.format("Found %s menus", list.size()));
+                adapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) { }
+        });
     }
 
     @Override

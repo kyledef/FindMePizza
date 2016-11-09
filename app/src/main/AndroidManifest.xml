@@ -1,55 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.kyledef.findmepizza" >
+		  package="org.kyledef.findmepizza">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+	<uses-permission android:name="android.permission.INTERNET"/>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	<uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+	<uses-permission android:name="android.permission.USE_CREDENTIALS"/>
 
-    <application
-        android:allowBackup="true"
-        android:icon="@drawable/find_me_pizza"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-        <activity
-            android:name=".ui.PizzaList"
-            android:label="@string/app_name" >
-        </activity>
-        <activity
-            android:name=".ui.MenuList"
-            android:label="@string/menu_title" >
-        </activity>
-        <activity
-            android:name=".ui.RecentActivity"
-            android:label="@string/app_name" >
-        </activity>
-        <activity
-            android:name=".ui.FavouritesActivity"
-            android:label="@string/app_name" >
-        </activity>
-        <activity android:name=".ui.SplashScreen" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+	<application
+		android:allowBackup="true"
+		android:icon="@drawable/find_me_pizza"
+		android:label="@string/app_name"
+		android:theme="@style/AppTheme">
+		<activity
+			android:name=".ui.PizzaList"
+			android:label="@string/app_name"
+			android:configChanges="orientation"
+			android:screenOrientation="portrait">
+		</activity>
+		<activity
+			android:name=".ui.MenuList"
+			android:label="@string/menu_title"
+			android:configChanges="orientation"
+			android:screenOrientation="portrait">
+		</activity>
+		<activity
+			android:name=".ui.RecentActivity"
+			android:label="@string/app_name"
+			android:configChanges="orientation"
+			android:screenOrientation="portrait">
+		</activity>
+		<activity
+			android:name=".ui.FavouritesActivity"
+			android:label="@string/app_name"
+			android:configChanges="orientation"
+			android:screenOrientation="portrait">
+		</activity>
+		<activity
+			android:name=".ui.SplashScreen"
+			android:configChanges="orientation"
+			android:screenOrientation="portrait">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN"/>
+				<category android:name="android.intent.category.LAUNCHER"/>
+			</intent-filter>
+		</activity>
+		<activity
+			android:name=".ui.OutletFilterActivity"
+			android:label="@string/title_activity_outlet_filter"
+			android:parentActivityName=".ui.PizzaList"
+			android:configChanges="orientation"
+			android:screenOrientation="portrait">
+			<meta-data
+				android:name="android.support.PARENT_ACTIVITY"
+				android:value="org.kyledef.findmepizza.ui.PizzaList"/>
+		</activity>
+		<activity
+			android:name=".ui.SettingsActivity"
+			android:label="@string/title_activity_settings"
+			android:configChanges="orientation"
+			android:screenOrientation="portrait">
+		</activity>
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+		<meta-data
+			android:name="com.google.android.gms.version"
+			android:value="@integer/google_play_services_version"/>
 
-        <activity
-            android:name=".ui.OutletFilterActivity"
-            android:label="@string/title_activity_outlet_filter"
-            android:parentActivityName=".ui.PizzaList" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="org.kyledef.findmepizza.ui.PizzaList" />
-        </activity>
-        <activity
-            android:name=".ui.SettingsActivity"
-            android:label="@string/title_activity_settings" >
-        </activity>
-
-        <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version" />
-    </application>
+		<activity
+			android:name=".ui.FranchiseList"
+			android:configChanges="orientation"
+			android:screenOrientation="portrait">
+		</activity>
+	</application>
 
 </manifest>

@@ -11,7 +11,6 @@ import org.kyledef.findmepizza.helper.FavouriteHelper;
 import org.kyledef.findmepizza.helper.RecentAdapter;
 import org.kyledef.findmepizza.helper.RecyclerHelper;
 import org.kyledef.findmepizza.model.OutletModel;
-import org.kyledef.findmepizza.model.PizzaModelManager;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,7 +31,7 @@ public class FavouritesActivity  extends BaseActivity{
         content.addView(layout);
 
         recyclerView = (RecyclerView) findViewById(R.id.fav_list);
-        RecyclerHelper.configureRecycler(this, recyclerView);
+        RecyclerHelper.configureListRecycler(this, recyclerView);
         list = new ArrayList<>();
         adapter = new RecentAdapter(list);
         recyclerView.setAdapter(adapter);

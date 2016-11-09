@@ -7,6 +7,11 @@ public class FranchiseModel {
     String url;
     int logoR;
 
+
+    public FranchiseModel(){
+
+    }
+
     public FranchiseModel(int id, String name, String shortCode, String url, int logoR) {
         this.id = id;
         this.name = name;

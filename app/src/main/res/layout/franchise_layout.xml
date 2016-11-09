@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<org.kyledef.findmepizza.ui.views.SquareLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<org.kyledef.findmepizza.ui.views.SquareImageView
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/franchise_logo"
+		android:layout_gravity="center_horizontal"
+		android:src="@color/primary_color"
+		android:contentDescription="@string/franchise"
+		android:layout_margin="5dp"
+		android:background="@color/google_white"
+		android:scaleType="fitXY"/>
+
+	<TextView
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:text="@string/franchise_placeholder"
+		android:id="@+id/franchise_name"
+		android:layout_gravity="bottom|center_horizontal"
+		android:textColor="@android:color/white"
+		android:layout_margin="16dp"
+		android:visibility="gone"
+		android:elevation="3dp"
+		android:translationZ="3dp" />
+
+</org.kyledef.findmepizza.ui.views.SquareLayout>

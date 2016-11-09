@@ -1,13 +1,13 @@
 <resources>
-    <!-- Example customization of dimensions originally defined in res/values/dimens.xml
+	<!-- Example customization of dimensions originally defined in res/values/dimens.xml
          (such as screen margins) for screens with more than 820dp of available width. This
          would include 7" and 10" devices in landscape (~960dp and ~1280dp respectively). -->
-    <dimen name="activity_horizontal_margin">4dp</dimen>
+	<dimen name="activity_horizontal_margin">4dp</dimen>
 
-    <!-- ListView -->
-    <dimen name="item_margin">2dp</dimen>
-    <dimen name="outlet_height">100dp</dimen>
+	<!-- ListView -->
+	<dimen name="item_margin">2dp</dimen>
+	<dimen name="outlet_height">100dp</dimen>
 
-    <!--navigation_drawer-->
-    <dimen name="navigation_drawer_width">300dp</dimen>
+	<!--navigation_drawer-->
+	<dimen name="navigation_drawer_width">300dp</dimen>
 </resources>

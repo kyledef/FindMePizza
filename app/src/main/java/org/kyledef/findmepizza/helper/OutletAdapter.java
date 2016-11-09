@@ -49,7 +49,7 @@ public class OutletAdapter extends RecyclerView.Adapter<OutletAdapter.OutletView
     }
 
     public interface OutletClickListener {
-        public void onItemClick(OutletModel outlet);
+        void onItemClick(OutletModel outlet);
     }
 
     public class OutletViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {

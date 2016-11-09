@@ -84,9 +84,8 @@ public abstract class BaseActivity extends AppCompatActivity implements NavDrawe
     }
 
     private void launchHome(){
-        startActivity(new Intent(this, PizzaList.class));
-        if (this instanceof PizzaList)
-            finish();
+        if (!(this instanceof  FranchiseList))
+            startActivity(new Intent(this, FranchiseList.class));
     }
     
     private void launchRecent(){
