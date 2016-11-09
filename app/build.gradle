@@ -34,6 +34,8 @@ dependencies {
     compile 'com.google.android.gms:play-services-auth:9.8.0'
     // For Integrating Firebase Analytics
     compile 'com.google.firebase:firebase-core:9.8.0'
+    // For Integrating Firebase Database
+    compile 'com.google.firebase:firebase-database:9.8.0'
     // For Integrating Firebase-UI Utilities
     compile 'com.firebaseui:firebase-ui-database:1.0.0'
     compile 'com.firebaseui:firebase-ui-auth:1.0.0'

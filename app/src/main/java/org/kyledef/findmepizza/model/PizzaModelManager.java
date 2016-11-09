@@ -1,6 +1,10 @@
 package org.kyledef.findmepizza.model;
 
 import android.content.Context;
+import android.util.Log;
+
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -70,9 +74,11 @@ public class PizzaModelManager {
         ArrayList<OutletModel> list = new ArrayList<>();
         try {
             JSONArray jList = this.retrieveOutlets();
+            Log.d("ModelManager", String.format("getOutLets found %s outlets", jList.length()));
             Map<String, Integer> logoMap = this.getLogos();
             for (int i = 0; i < jList.length(); i++) {
                 JSONObject json = jList.getJSONObject(i);
+//                Log.d("ModelManager", String.format("Comparing %s with %s", franchise, json.getString("franchise")));
                 if (franchise.equalsIgnoreCase(json.getString("franchise"))) {
                     Integer logoR = logoMap.get(json.getString("franchise"));
                     OutletModel mModel = new OutletModel(json.getInt("id"), json.getString("name"), json.getString("address"), json.getString("franchise"), logoR.intValue(), json.getString("phone1"));
@@ -197,5 +203,27 @@ public class PizzaModelManager {
         return (retrieveAllInfo() != null);
     }
 
+    // For Testing Purposes
+    public void load2Firebase(){
+        Log.d("ModelManager", "Load Firebase");
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference();
+        ArrayList<FranchiseModel> franchises = getFranchises();
+        for(FranchiseModel franchise : franchises){
+            database.child("franchise").child(franchise.getShortCode()).setValue(franchise);
+            ArrayList<OutletModel> outletModels = getOuLets(franchise.getShortCode());
+            Log.d("ModelManager", String.format("Received %s outlets for %s ", outletModels.size(), franchise.getName()));
+            for (OutletModel outlet : outletModels){
+                String key = database.child("outlets").child(franchise.getShortCode()).push().getKey();
+                database.child("outlets").child(franchise.getShortCode()).child(key).setValue(outlet);
+            }
+            ArrayList<MenuModel> menuModels = getMenus(franchise.getShortCode());
+            Log.d("ModelManager", String.format("Received %s menus for %s ", menuModels.size(), franchise.getName()));
+            for (MenuModel menu : menuModels){
+                String key = database.child("menus").child(franchise.getShortCode()).push().getKey();
+                database.child("menus").child(franchise.getShortCode()).child(key).setValue(menu);
+            }
+
+        }
+    }
 
 }

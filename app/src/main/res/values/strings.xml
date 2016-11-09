@@ -39,4 +39,5 @@
     <string name="recent_description" >Outlets were recently selected.</string>
     <string name="signInSuccess">Successfully Signed In</string>
     <string name="signOutSuccess">Successfully Signed Out</string>
+    <string name="no_conn_dialog">Internet Required for First Use. Retry?</string>
 </resources>

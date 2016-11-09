@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class OutletModel implements Parcelable {
     public static final Parcelable.Creator<OutletModel> CREATOR = new Parcelable.Creator<OutletModel>() {
 
@@ -21,7 +25,7 @@ public class OutletModel implements Parcelable {
     int id;
     String name;
     String address;
-    String[] contacts;
+    List<String> contacts;
     String franchise;
     int logoR;
 
@@ -29,7 +33,7 @@ public class OutletModel implements Parcelable {
         this.id = id;
         this.name = name;
         this.address = address;
-        this.contacts = contacts;
+        this.contacts = new ArrayList<>(Arrays.asList(contacts));
         this.franchise = franchise;
         this.logoR = logo;
     }
@@ -46,11 +50,11 @@ public class OutletModel implements Parcelable {
         this.id = intArr[0];
         this.logoR = intArr[1];
 
-        Bundle b = parcel.readBundle();
-        if (b != null) this.contacts = b.getStringArray("contacts");
+        Bundle b = parcel.readBundle(getClass().getClassLoader());
+        if (b != null) this.contacts = new ArrayList<>(Arrays.asList( b.getStringArray("contacts") ));
         else {
-            this.contacts = new String[1];
-            this.contacts[0] = strArr[2];
+            this.contacts =new ArrayList<>();
+            this.contacts.add(strArr[2]);
         }
     }
 
@@ -66,16 +70,16 @@ public class OutletModel implements Parcelable {
         return address;
     }
 
-    public String[] getContacts() {
-        return contacts;
+    public List<String> getContacts() {
+        return  contacts;
     }
 
     public String getContact() {
-        return contacts[0];
+        return contacts.get(0);
     }
 
     public String getContact(int i) {
-        if (i < contacts.length) return contacts[i];
+        if (i < contacts.size()) return contacts.get(i);
         return null;
     }
 
@@ -94,10 +98,10 @@ public class OutletModel implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeStringArray(new String[]{name, address, contacts[0], franchise});
+        dest.writeStringArray(new String[]{name, address, contacts.get(0), franchise});
         dest.writeIntArray(new int[]{id, logoR});
         Bundle b = new Bundle();
-        b.putStringArray("contacts", contacts);
+        b.putStringArray("contacts", contacts.toArray(new String[2]));
         dest.writeBundle(b);
     }
 
